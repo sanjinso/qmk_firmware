@@ -15,15 +15,17 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "zigotica.h"
 
 // clang-format off
-#define _BLANK_ROW      _______, _______, _______, _______, _______
 #define _BLANK_THUMB    _______, _______
+#define _BLANK_3        _______, _______, _______
+#define _BLANK_4        _______, _______, _______, _______
+#define _BLANK_ROW      _______, _______, _______, _______, _______
 
 /*
  * STENAI Layer
  *
  *   ,---------------------------------------.         ,---------------------------------------.
  *   |       |       |       |       |       |         |       |       |       |       |       |
- *   |  ` ~  |   W   |   D   |   P   |   F   |         |   K   |   Y   |   U   |   Q   |  ' "  |
+ *   |  ` ~  |   W   |   D   |   P   |   F   |         |   Q   |   L   |   U   |   Y   |  ' "  |
  *   |       |       |       |       |       |         |       |       |       |       |       |
  *   |-------+-------+-------+-------+-------|         |-------+-------+-------+-------+-------|
  *   |       |       |       |       |       |         |       |       |       |       |       |
@@ -31,7 +33,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *   |  alt  | ctrl  | shft  | meta  |       |         |       |  meta |  shft | ctrl  |  alt  |
  *   |-------+-------+-------+-------+-------|         |-------+-------+-------+-------+-------|
  *   |       |       |       |       |       |         |       |       |       |       |       |
- *   |   B   |   X   |   C   |   V   |  [ {  |         |  , <  |   L   |   Z   |   J   |   . > |
+ *   |   B   |   X   |   C   |   V   |  [ {  |         |  , <  |   K   |   Z   |   J   |   . > |
  *   |       |       |       |       | TD ]} |         |  TD ; |       |       |       |  TD : |
  *   `-------+-------+-------+-------+-------|         |-------+-------+-------+-------+-------.
  *                           |       |       |         |       |       |
@@ -45,9 +47,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define _STENAI_L3      KC_B,             KC_X,            KC_C,          KC_V,             ZK_BRC
 #define _STENAI_LT      LT(_NUM, KC_TAB), LT(_NAV, KC_SPC)
 
-#define _STENAI_R1      KC_K,             KC_Y,            KC_U,          KC_Q,             KC_QUOT
+#define _STENAI_R1      KC_Q,             KC_L,            KC_U,          KC_Y,             KC_QUOT
 #define _STENAI_R2      KC_M,             RGUI_T(KC_N),    RSFT_T(KC_A),  RCTL_T(KC_I),     RALT_T(KC_O)
-#define _STENAI_R3      ZK_SEMI,          KC_L,            KC_Z,          KC_J,             ZK_COLON
+#define _STENAI_R3      ZK_SEMI,          KC_K,            KC_Z,          KC_J,             ZK_COLON
 #define _STENAI_RT      LT(_SYM, KC_E),   LT(_FN, KC_ENT)
 
 
@@ -60,12 +62,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define _COLEMAK_R3     KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH
 
 #define _QWERTY_L1      KC_Q,    KC_W,    KC_E,    KC_R,    KC_T
-#define _QWERTY_L2      KC_A,    KC_S,    KC_D,    KC_F,    KC_G
+#define _QWERTY_L2      LALT_T(KC_A),     LCTL_T(KC_S),    LSFT_T(KC_D),  LGUI_T(KC_F),     KC_G
 #define _QWERTY_L3      KC_Z,    KC_X,    KC_C,    KC_V,    KC_B
+#define _QWERTY_LT      LT(_NUM, KC_TAB), LT(_NAV, KC_SPC)
 
 #define _QWERTY_R1      KC_Y,    KC_U,    KC_I,    KC_O,    KC_P
-#define _QWERTY_R2      KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT
+#define _QWERTY_R2      KC_H,    RGUI_T(KC_J),    RSFT_T(KC_K),  RCTL_T(KC_L), RALT_T(KC_SCLN)
 #define _QWERTY_R3      KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH
+#define _QWERTY_RT      LT(_SYM, KC_SPC), LT(_FN, KC_ENT)
 
 /*
  * NUM Layer
@@ -191,4 +195,17 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define ____FN_R2       _______,  KC_F1,  KC_F2,  KC_F3,  KC_F11
 #define ____FN_R3       _______,  KC_F4,  KC_F5,  KC_F6,  KC_F12
 #define ____FN_RT       _BLANK_THUMB
+
+
+// Ortho short rows
+#define ____NUM15      KC_1,    KC_2,    KC_3,   KC_4,   KC_5
+#define ____NUM60      KC_6,    KC_7,    KC_8,   KC_9,   KC_0
+#define ____FN_15      KC_F1,   KC_F2,   KC_F3,  KC_F4,  KC_F5
+#define ____FN_60      KC_F6,   KC_F7,   KC_F8,  KC_F9,  KC_F10
+#define ____LMODS      KC_LCTL, KC_LALT, KC_LGUI
+#define ____TARRS      _______, KC_UP,   _______
+#define ____BARRS      KC_LEFT, KC_DOWN, KC_RIGHT
+#define ____LORTH      ____LMODS, KC_MINS
+#define ____RORTH      KC_BSPC, KC_SCLN, KC_BSLS, KC_SLSH
+
 // clang-format on

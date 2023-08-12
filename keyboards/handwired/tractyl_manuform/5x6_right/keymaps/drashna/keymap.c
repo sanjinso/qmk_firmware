@@ -59,18 +59,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _________________DVORAK_L3_________________, _________________DVORAK_R3_________________
     ),
 
-    [_MOUSE] = LAYOUT_5x6_right(
-        _______, _______, _______, _______, _______, _______,                     DPI_CONFIG, _______, _______, _______, _______, _______,
-        _______, _______, _______, _______, _______, _______,                        KC_WH_U, _______, _______, _______, _______, _______,
-        _______, _______, _______, _______, _______, _______,                        KC_WH_D, KC_BTN1, KC_BTN3, KC_BTN2, KC_BTN6, _______,
-        _______, _______, _______, _______, _______, _______,                        KC_BTN7, KC_BTN4, KC_BTN5, KC_BTN8, _______, _______,
-                          _______, _______,                                                            _______, _______,
-                                            _______, _______,                                 KC_BTN3,
-                                                     _______, KC_ACCEL,              _______,
-                                                     _______, _______,      _______, _______
-    ),
     [_GAMEPAD] = LAYOUT_5x6_right(
-        KC_ESC,  KC_NO,   KC_1,    KC_2,    KC_3,    KC_4,                        DPI_CONFIG, _______, _______, _______, _______, _______,
+        KC_ESC,  KC_NO,   KC_1,    KC_2,    KC_3,    KC_4,                           _______, _______, _______, _______, _______, _______,
         KC_F1,   KC_K,    KC_Q,    KC_W,    KC_E,    KC_R,                           _______, _______, _______, _______, _______, _______,
         KC_TAB,  KC_G,    KC_A,    KC_S,    KC_D,    KC_F,                           _______, _______, _______, _______, _______, _______,
         KC_LCTL, KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_H,                           _______, _______, _______, _______, _______, _______,
@@ -99,71 +89,73 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                KC_LSFT, _______,                     _______,
                                                KC_LCTL, KC_V,               _______, _______
     ),
+    [_MOUSE] = LAYOUT_5x6_right(
+        _______, _______, _______, _______, _______, _______,                        _______, DPI_RMOD,DPI_MOD, S_D_RMOD,S_D_MOD, PD_JIGGLER,
+        _______, _______, _______, _______, _______, _______,                        KC_WH_U, _______, _______, _______, _______, DRGSCRL,
+        _______, _______, _______, _______, _______, _______,                        KC_WH_D, KC_BTN1, KC_BTN3, KC_BTN2, KC_BTN6, SNIPING,
+        _______, _______, _______, _______, _______, _______,                        KC_BTN7, KC_BTN4, KC_BTN5, KC_BTN8, _______, _______,
+                          _______, _______,                                                            _______, _______,
+                                            _______, _______,                                 KC_BTN3,
+                                                     _______, _______,               _______,
+                                                     _______, _______,      _______, _______
+    ),
     [_LOWER] = LAYOUT_5x6_right_wrapper(
         KC_F12,  _________________FUNC_LEFT_________________,                        _________________FUNC_RIGHT________________, KC_F11,
         _______, _________________LOWER_L1__________________,                        _________________LOWER_R1__________________, _______,
         _______, _________________LOWER_L2__________________,                        _________________LOWER_R2__________________, KC_PIPE,
         _______, _________________LOWER_L3__________________,                        _________________LOWER_R3__________________, _______,
-                          _______, _______,                                                          _______, _______,
-                                            _______, _______,                               _______,
-                                                     _______, _______,             _______,
-                                                     _______, _______,    _______, _______
+                          _______, _______,                                                            _______, _______,
+                                            _______, _______,                                 _______,
+                                                     _______, _______,               _______,
+                                                     _______, _______,      _______, _______
     ),
     [_RAISE] = LAYOUT_5x6_right_wrapper(
-        KC_F12,  _________________FUNC_LEFT_________________,                      _________________FUNC_RIGHT________________, KC_F11,
-        KC_GRV,  _________________RAISE_L1__________________,                      _________________RAISE_R1__________________, _______,
-        _______, _________________RAISE_L2__________________,                      _________________RAISE_R2__________________, KC_BSLS,
-        _______, _________________RAISE_L3__________________,                      _________________RAISE_R3__________________, _______,
-                          _______, _______,                                                          _______, _______,
-                                            _______, _______,                               _______,
-                                                     _______, _______,             _______,
-                                                     _______, _______,    _______, _______
+        KC_F12,  _________________FUNC_LEFT_________________,                        _________________FUNC_RIGHT________________, KC_F11,
+        KC_GRV,  _________________RAISE_L1__________________,                        _________________RAISE_R1__________________, _______,
+        _______, _________________RAISE_L2__________________,                        _________________RAISE_R2__________________, KC_BSLS,
+        _______, _________________RAISE_L3__________________,                        _________________RAISE_R3__________________, _______,
+                          _______, _______,                                                            _______, _______,
+                                            OL_LOCK, _______,                                 _______,
+                                                     _______, _______,               _______,
+                                                     _______, _______,      _______, _______
     ),
     [_ADJUST] = LAYOUT_5x6_right_wrapper(
-        KC_MAKE, KC_WIDE,KC_AUSSIE,KC_SCRIPT,KC_ZALGO,KC_NOMODE,               KC_NOMODE,KC_BLOCKS,KC_REGIONAL,_______,_______, KC_RST,
-        VRSN,    _________________ADJUST_L1_________________,                      _________________ADJUST_R1_________________, EEP_RST,
-        KEYLOCK, _________________ADJUST_L2_________________,                      _________________ADJUST_R2_________________, TG_MODS,
-        UC_MOD,  _________________ADJUST_L3_________________,                      _________________ADJUST_R3_________________, KC_MPLY,
-                   TG(_DIABLOII), AUTO_CTN,                                                          TG_GAME, TG_DBLO,
-                                            _______, REBOOT,                                KC_NUKE,
-                                                     _______, _______,             _______,
-                                                     _______, _______,    KC_NUKE, _______
+        QK_MAKE, KC_WIDE,KC_AUSSIE,KC_SCRIPT,KC_ZALGO,KC_NOMODE,                 KC_NOMODE,KC_BLOCKS,KC_REGIONAL,_______,_______, QK_BOOT,
+        VRSN,    _________________ADJUST_L1_________________,                        _________________ADJUST_R1_________________, EE_CLR,
+        KEYLOCK, _________________ADJUST_L2_________________,                        _________________ADJUST_R2_________________, TG_MODS,
+        UC_NEXT, _________________ADJUST_L3_________________,                        _________________ADJUST_R3_________________, KC_MPLY,
+                   TG(_DIABLOII), AUTO_CTN,                                                            TG_GAME, TG_DBLO,
+                                            _______, QK_RBT,                                  KC_NUKE,
+                                                     HF_TOGG, _______,               _______,
+                                                     _______, _______,      KC_NUKE, _______
     ),
 };
-
-#define BASE_ENCODERS { { KC_VOLD, KC_VOLU }, { KC_WH_D, KC_WH_U } }
+// clang-format on
 
 #ifdef ENCODER_MAP_ENABLE
-const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
-    [_DEFAULT_LAYER_1] = BASE_ENCODERS,
-    [_DEFAULT_LAYER_2] = BASE_ENCODERS,
-    [_DEFAULT_LAYER_3] = BASE_ENCODERS,
-    [_DEFAULT_LAYER_4] = BASE_ENCODERS,
-    [_GAMEPAD]         = { { _______, _______ }, { _______, _______ } },
-    [_DIABLO]          = { { _______, _______ }, { _______, _______ } },
-    [_MOUSE]           = { { _______, _______ }, { KC_WH_D, KC_WH_U } },
-    [_MEDIA]           = { { _______, _______ }, { _______, _______ } },
-    [_RAISE]           = { { _______, _______ }, { KC_PGDN, KC_PGUP } },
-    [_LOWER]           = { { RGB_MOD, RGB_RMOD}, { RGB_HUD, RGB_HUI } },
-    [_ADJUST]          = { { CK_DOWN, CK_UP   }, { _______, _F______ } },
+// clang-format off
+const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
+    [_DEFAULT_LAYER_1] = { ENCODER_CCW_CW( KC_VOLU, KC_VOLD ), ENCODER_CCW_CW( KC_WH_U, KC_WH_D ) },
+    [_DEFAULT_LAYER_2] = { ENCODER_CCW_CW( _______, _______ ), ENCODER_CCW_CW( _______, _______ ) },
+    [_DEFAULT_LAYER_3] = { ENCODER_CCW_CW( _______, _______ ), ENCODER_CCW_CW( _______, _______ ) },
+    [_DEFAULT_LAYER_4] = { ENCODER_CCW_CW( _______, _______ ), ENCODER_CCW_CW( _______, _______ ) },
+    [_GAMEPAD]         = { ENCODER_CCW_CW( _______, _______ ), ENCODER_CCW_CW( _______, _______ ) },
+    [_DIABLO]          = { ENCODER_CCW_CW( _______, _______ ), ENCODER_CCW_CW( _______, _______ ) },
+    [_MOUSE]           = { ENCODER_CCW_CW( _______, _______ ), ENCODER_CCW_CW( _______, _______ ) },
+    [_MEDIA]           = { ENCODER_CCW_CW( _______, _______ ), ENCODER_CCW_CW( _______, _______ ) },
+    [_RAISE]           = { ENCODER_CCW_CW( OL_BINC, OL_BDEC ), ENCODER_CCW_CW( KC_PGDN, KC_PGUP ) },
+    [_LOWER]           = { ENCODER_CCW_CW( RGB_MOD, RGB_RMOD), ENCODER_CCW_CW( RGB_HUI, RGB_HUD ) },
+    [_ADJUST]          = { ENCODER_CCW_CW( CK_UP,   CK_DOWN ), ENCODER_CCW_CW( _______, _______ ) },
 };
 // clang-format on
-#else
-bool encoder_update_user(uint8_t index, bool clockwise) {
-#    ifdef SWAP_HANDS_ENABLE
-    if (swap_hands) {
-        index ^= 1;
-    }
-#    endif
-    if (index == 0) {
-        tap_code_delay(clockwise ? KC_VOLD : KC_VOLU, 5);
-    } else if (index == 1) {
-        tap_code_delay(clockwise ? KC_WH_D : KC_WH_U, 5);
-    }
-    return false;
-}
 #endif
 
 #ifdef OLED_ENABLE
-oled_rotation_t oled_init_keymap(oled_rotation_t rotation) { return OLED_ROTATION_180; }
+oled_rotation_t oled_init_keymap(oled_rotation_t rotation) {
+    return OLED_ROTATION_180;
+}
+
+void render_oled_title(bool side) {
+    oled_write_P(side ? PSTR("   Tractyl   ") : PSTR("   Manuform  "), true);
+}
 #endif
