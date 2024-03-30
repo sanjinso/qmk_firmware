@@ -1,0 +1,334 @@
+
+
+
+
+
+
+- Activate Default Shift
+- Install second Encoder
+
+- Activate Haptic Buzzer:
+ - - Alt + Tab: Combo
+ 
+ - Rework Oled Layer Indicator
+
+- Double Thumb Button for quick windows -- DONE
+
+
+
+
+
+
+TIPS
+- Both Shifts for Caps Lock Word
+
+
+2. Hold down the Space and Backspace keys while plugging in the keyboard.
+To reset EEROM. Use the key code EE_CLR in your layout. Pressing this key will clear the EEPROM.fffff
+FUNL Layer
+
+
+------------------
+
+
+TODO  
+- Thingiverse Case
+https://www.thingiverse.com/thing:5898960
+https://www.thingiverse.com/thing:5407420
+https://www.thingiverse.com/thing:5138904
+  
+
+- Haptic Feedback
+https://www.reddit.com/r/olkb/comments/ni1xrl/kyria_with_trackpoint_haptic_feedback_and_custom/
+https://github.com/qmk/qmk_firmware/blob/master/docs/feature_haptic_feedback.md
+https://www.reddit.com/r/ErgoMechKeyboards/comments/134n3mq/help_haptic_device_on_both_split_halves/S
+
+- Dynamic Macros
+
+- Use 2-Hand Thumb Button Combos 
+- Key + BSPC Combos
+
+
+- Icon indicators for layers https://getreuer.info/posts/keyboards/triggers/index.html#on-entering-or-exiting-a-layer
+https://www.reddit.com/r/MechanicalKeyboards/comments/y916bk/i_programmed_my_corne_oled_via_qmk_to_show_a/
+
+- Colours for layers
+
+
+- Make Macros for Onehand Commands (Copy Paste etc)
+- Create Combos
+
+- Tapping Term https://precondition.github.io/home-row-mods#tapping-term-test-area
+
+
+----------
+INTERESTING
+
+- Alt+num combos at the top row
+- Shut off RGB When Idling
+- Do something when typing an sequence (pasting email when typing qem) https://getreuer.info/posts/keyboards/triggers/index.html
+- Tutorial for Caps Word by pressing both Shift Keys (https://getreuer.info/posts/keyboards/triggers/index.html)
+- Optimizing Symbol Layer https://getreuer.info/posts/keyboards/symbol-layer/index.html#design-principles
+
+- Select Word, Select Sentence Macro
+https://github.com/rafaelromao/keyboards/blob/main/src/qmk/users/rafaelromao/features/select_word.c
+
+- Application, Tab Swapper
+https://github.com/rafaelromao/keyboards/blob/main/src/qmk/users/rafaelromao/features/swapper.c
+
+
+- PERMISSIVE_HOLD_PER_KEY
+https://docs.qmk.fm/#/tap_hold?id=permissive-hold
+s
+- MAKE COMBOS MODIFIER DEPENDENTs
+https://github.com/precondition/qmk_firmware/blob/mod-tap-combos/keyboards/handwired/dactyl_manuform/5x6/keymaps/precondition/combos.c#L139
+
+
+Put Homerrow Mods on separate layer and make them sticky?
+Meaning if pressed they are active until homerow layer
+is tapped once more?
+HomerowLayerThumb->CTRL_S->NavLayerThump->Arrow,Arrow->HomeRowLayerThumb
+Callum User Alternative to Homerow mods
+https://github.com/callum-oakley/qmk_firmware/tree/master/users/callum
+
+
+
+Use Top Row of Sofle in Buteck for onehand Shortcuts?
+Use Left Hand Mouse, NAV Layers empty Keys for Shortcuts?
+- Copy
+- Cut
+- Paste
+- Select All
+- Alt + F4
+- Strg + W
+- Strg + T
+- Strg + L
+- Alt + Arrow
+- Alt + Tab
+- Alt + Shift + Tab
+- Strg + GUI + Arrow
+- GUI + E
+- GUI + D
+- Gui + Arrow
+- STRG + N
+- STRG + Shift + Arrow
+- Shift + Arrow
+
+
+
+//Display
+- Show pevious, next and active layer
+- show cpi of mouselayer
+
+https://onedrive.live.com/?authkey=%21ANNwT5xamC6%5Ffs0&id=6A2FEC55F36B18DB%217720&cid=6A2FEC55F36B18DB&parId=root&parQt=sharedby&o=OneUp
+
+-Dog
+https://www.youtube.com/watch?v=HgIQRazCAjo
+
+
+
+
+
+
+process_record_user
+Memory effective programming examples
+D:\Development\QMK\keyboards\sofle\keymaps\bastien-baloup_fr\keymap.c
+
+
+
+
+
+Use Per Key EGB to light up wich keys are active on each layer
+like numpad, media control..0
+//Encoder, OLED Setup
+D:\Development\QMK\keyboards\sofle\keymaps\devdev\keymap.c
+D:\Development\QMK\keyboards\sofle\keymaps\via\oled.c
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Explanation of weird C Syntax 
+https://getreuer.info/posts/keyboards/faqs/index.html#what-is-this-weird-c-syntax-qmk
+
+
+
+
+Default SplitKB Aurora Sofle v2
+https://github.com/qmk/qmk_firmware/blob/master/keyboards/splitkb/aurora/sofle_v2/sofle_v2.c
+
+
+
+
+
+
+
+
+https://github.com/callum-oakley/qmk_firmware/tree/master/users/callum
+https://www.reddit.com/r/ErgoMechKeyboards/comments/mq1v47/are_you_using_any_alternative_to_modtap_on_a_36/
+https://precondition.github.io/home-row-mods#rolled-modifiers-cancellation
+
+Tips for Homerow Mod Settings (Below Achordion)
+https://getreuer.info/posts/keyboards/achordion/index.html
+
+
+
+
+
+
+
+SOFTWARE
+
+
+
+//Layout
+
+- the "a" in "ear" does not register.
+- Double Tpping Enter quickly could activate rapid fire mode 
+
+- https://getreuer.info/posts/keyboards/achordion/index.html 
+
+- Encoder does Multiple Lazer specific Things
+- Encoder does not work for tab {strg+tab} switching
+- Encoder does not work for alt + tab
+
+//HARDWARE
+
+//Lily58 Upate
+- New Case Frosted bottom
+- New Microcontroller Type USBy
+- Robin Switches
+- Lily58 Pro / Sofle v2 PCB Kit
+
+//LILY58 Problems
+- Diverse Tasten gehen nicht
+- Oleds nicht installiert 
+- Layouts von Kyria noch nicht übernemmon
+
+
+//Kyria UPdate 
+- Starcraft Hotkeys for Gaming Layer
+- RGB Strip?
+
+
+//Star Citizen
+- Target Button nicht auf T weil über W, stattdessen I?
+
+- R (Ready Fight) -> auf T
+
+- Neuen Button Next Target? old R
+- Neuer Button for Engine off? old I
+
+- Wenn To(Base ) is hold temporarily change to the layer while holding
+- Energy direction easy access (second modifier?)
+- Make F4 open contracts
+
+
+
+
+
+//Starcraft 2
+Modifier (Importance)
+- Select Groups
+- Add/Steal to Group Strg
+- Select Camera Locations
+- Create Camera Location
+
+- Shift
+- Alt 
+- Strg
+
+- Build amenu
+- Advanced Menu
+- Attack
+- Patrol
+- Hold Positions
+- Stop
+
+- Ability 1
+- Ability 2
+- Ability 3
+
+LOW PRIORITY
+
+- Homerow Keys accidentally activate:
+- PUTTING modifiers one below homerow might help (lots of learning needed)
+- Finetune tapping term per key https://precondition.github.io/home-row-mods#tapping-term-test-area
+
+- Typing on homerow feels slightly sluggish because it waits for release within tapping term to decide if its an hold or an tap
+- Confusion with Layer Toggle and Switch:
+LYR RESET
+LYR LOCK
+LYR TOGGLE
+
+
+
+
+https://www.reddit.com/r/ErgoMechKeyboards/comments/klcsek/quick_poll_do_you_use_homerow_modslayers/
+https://www.reddit.com/r/ErgoMechKeyboards/comments/ieegqa/implementing_home_row_mods/
+https://www.reddit.com/r/ErgoMechKeyboards/comments/twl8yn/why_i_avoid_homerow_modifiers/
+
+
+
+UNUSED SHORTCUTS
+
+//WIN_CTRL_UP
+//WIN_CTRL_DOWN
+//WIN_CTRL_
+
+
+
+
+
+/*
+* Base Layer: GAMING
+* C V Y X      G T B H Z N M J U     K I 
+*
+* Y, B, Z, N, M, J, U 
+* ,-----------------------------------n--------.                                  ,-------------------------------------------.
+* | RESET LYR |  I   |   Q  |   T  |   E  |   R  |                               |      |      |      |      |      |        |
+* |-----------+------+------+------+------+------|                               |------+------+------+------+------+--------|
+* | LTAB      | Shift|   A  |   W  |   D  |   F  |                               |      |      |      |      |      |        |
+* |-----------+------+------+------+------+------+--------------.  ,-------------+------+------+------+------+------+--------|
+* |  Z        | CTRL |   X  |   S  |   C  |   G  |       |      |  |      |      |      |      |      |      |      |        |
+* `-------------------------+------+------+------+-------+      |  |------+------+------+------+------+----------------------'
+*                       | ____ |        |        |       |      |  |      |          |         |        |       |
+*                       |      |  ESC   | ALT/V | Space  |MOD1/H|  |      |          |         |        |       |
+*                       `--------------------------------------'  `---------------------------------------------'
+*/
+
+[GAME] = LAYOUT(
+   TO(BASE),KC_I,   KC_Q,    KC_T,    KC_E,    KC_R,                                           KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+   KC_TAB,  KC_LSFT, KC_A,    KC_W,    KC_D,    KC_F,                                           KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+   KC_Z,    KC_LCTL, KC_X,    KC_S,    KC_C,    KC_G,  KC_TRNS, KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+              KC_NU, KC_ESC, LALT_T(DE_V), KC_SPC,  LT(GAME_2, KC_H),     KC_ENT, KC_BSPC, KC_DEL, KC_TRNS, KC_TRNS
+),
+
+/*
+* Base Layer: GAMING_2
+*
+* ,-------------------------------------------.                                  ,-------------------------------------------.
+* | RESET LYR |  F1  |  F2  |  F3  |  F4  |  F5  |                               |      |      |      |      |      |        |
+* |-----------+------+------+------+------+------|                               |------+------+------+------+------+--------|
+* |     J     |   1  |   2  |   3  |   4  |   5  |                               |      |      |      |      |      |        |
+* |-----------+------+------+------+------+------+--------------.  ,-------------+------+------+------+------+------+--------|
+* |     U     |   Y  |   B  |   N  |   M  |   Z  |       |      |  |      |      |      |      |      |      |      |        |
+* `-------------------------+------+------+------+-------+      |  |------+------+------+------+------+----------------------'
+*                       | ____ |        |        |       |      |  |      |          |         |        |       |
+*                       |      |        |        | Space |  H   |  |      |          |         |        |       |
+*                       `--------------------------------------'  `---------------------------------------------'
+*/
+
+
+
+
+ 
