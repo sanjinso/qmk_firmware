@@ -14,7 +14,6 @@ enum custom_keycodes {
     LLOCK = SAFE_RANGE,
 };
 
-
 /* ********
 * TAP DANCE
 **********/
@@ -26,7 +25,6 @@ tap_dance_action_t tap_dance_actions[] = {
     [TD_CURNCY] = ACTION_TAP_DANCE_DOUBLE(DE_DLR, DE_EURO),
 };
 
-
 uint16_t copy_paste_timer;
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -35,11 +33,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 * ,-----------------------------------------------.                              ,------------------------------------------.
 * |            |      |      |      |      |      |                              |      |      |      |      |      |       |
 * |------------+------+------+------+------+------|                              |------+------+------+------+------+-------|
-* | LOCK LYR   |   F  |   M  |   L  |   C  |   P  |                              |   Ü  |   ,  |   .  |   U  |   B  |   ß   |
+* | NEXT LYR   |   F  |   M  |   L  |   C  |   P  |                              |   Ü  |   ,  |   .  |   U  |   B  |   ß   |
 * |------------+------+------+------+------+------|                              |------+------+------+------+------+-------|
-* | LOCK LYR   |   S  |   N  |   R  |   T  |   D  |                              |   O  |   A  |   E  |   I  |   H  |   X   |
+* | ESC        |   S  |   N  |   R  |   T  |   D  |                              |   O  |   A  |   E  |   I  |   H  |   X   |
 * |------------+------+------+------+------+------|-------.              ,-------+------+------+------+------+-------|
-* | TOGGLE LYR |   Z  |   V  |   W  |   G  |   J  |       |              |       |   Q  |   Ä  |   Ö  |   Y  |   K  |   -   |
+* | RESET LYR |   Z  |   V  |   W  |   G  |   J  |       |              |       |   Q  |   Ä  |   Ö  |   Y  |   K  |   -   |
 * `----------------------+------+--------+--------+-------------.  ,-------------+------+------+------+---------------------'
 *                        | ____ | INVRT | MEDIA | NAVI  | MOUSE |  | SYM  | NUM    | FUNC   | ?      | ____ |
 *                        |      | Escape| Enter | Space | Tab   |  | Enter| Bspace | Delete | Leader |      |
@@ -47,9 +45,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 */
 [BASE] = LAYOUT(
   KC_NU, KC_NU, KC_NU, KC_NU, KC_NU, KC_NU,                                         KC_NU, KC_NU, KC_NU, KC_NU, KC_NU,  KC_NU,  
-  TO(BASE),   DE_F,  DE_M,  DE_L,  DE_C,  DE_P,                                     DE_UE,  DE_COMM, DE_DOT, DE_U,  DE_B,  DE_SS,
+  TO(QWERTY),   DE_F,  DE_M,  DE_L,  DE_C,  DE_P,                                     DE_UE,  DE_COMM, DE_DOT, DE_U,  DE_B,  DE_SS,
   KC_ESC,      DE_S,  DE_N,  DE_R,  DE_T,  DE_D,                                     DE_O,   DE_A,    DE_E,   DE_I,  DE_H,  DE_X,
-  TO(QWERTY), GUI_Z, ALT_V, SHT_W, CTL_G, DE_J, KC_NU,                      KC_NU,   DE_Q,   CTL_AE,  SHT_OE, ALT_Y, GUI_K, DE_MINS,
+  TO(BASE), GUI_Z, ALT_V, SHT_W, CTL_G, DE_J, KC_NU,                      KC_NU,   DE_Q,   CTL_AE,  SHT_OE, ALT_Y, GUI_K, DE_MINS,
                         KC_NU, UC_TL1, UC_TL2, UC_TL3, UC_TL4,      UC_TR1, UC_TR2, UC_TR3, KC_LEAD, KC_TRNS
 ),
 
@@ -89,7 +87,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 * |-----------+------+------+------+------+------|                              |------+------+------+------+------+------|
 * | LOCK LYR  | GUI  | TM-  | TM+ | TM_TOGGLE| ____ |                              | ____ | PREV | VOLD | VOLU | NEXT | ____ |
 * |-----------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+------|
-* | TOGGLELYR | ____ | ____ | ____ | ____ | ____ | ____ | ____ |  | ____ | ____ | ____ | STOP | PLAY | MUTE | ____ | ____ |
+* | RESET LYR | ____ | ____ | ____ | ____ | ____ | ____ | ____ |  | ____ | ____ | ____ | STOP | PLAY | MUTE | ____ | ____ |
 * `-----------------------+------+--------+------+------+------|  |------+------+------+------+------+--------------------'
 *                       | ____ | INVRT | MEDIA | NAVI  | MOUSE |  |      |        |        | ____ | ____ |
 *                       | ____ | Escape| Enter | Space | Tab   |  | STOP | PLAY  | MUTE    | ____ | ____ |
@@ -114,7 +112,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 * |------------+------+------+------+------+------|                              |-------+------+------+------+------+------|
 * | LOCK LYR   | GUI  | ALT  | CTRL | SHIFT| ____ |                              | CAPS  | LEFT | DOWN | UP   | RIGHT| ____ |
 * |------------+------+------+------+------+------+-------------.  ,-------------+-------+------+------+------+------+------|
-* | TOGGLE LYR | ____ | ____ | ____ | ____ | ____ | ____ | ____ |  | ____ | ____ | INS   | HOME | PGDN | PGUP | END  | ____ |
+* | RESET LYR | ____ | ____ | ____ | ____ | ____ | ____ | ____ |  | ____ | ____ | INS   | HOME | PGDN | PGUP | END  | ____ |
 * `----------------------+------+--------+--------+------+------|  |------+------+-------+------+------+--------------------'
 *                        | ____ | INVRT | MEDIA | NAVI  | MOUSE |  |      |        |        | ____ | ____ |
 *                        | ____ | Escape| Enter | Space | Tab   |  | Enter| Bspace | Delete | ____ | ____ |
@@ -139,7 +137,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------------+------+------+------+------+------|                              |------+------+------+------+------+------|
  * | LOCK LYR   | GUI  | ALT  | CTRL | SHIFT| ____ |                              | ____ |MLEFT |MDOWN | MUP  |MRIGHT| ____ |
  * |------------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+------|
- * | TOGGLE LYR | ____ | ALGR | ____ | ____ | ____ | ____ | ____ |  | ____ | ____ | ____ |WLEFT |WDOWN | WUP  |WRIGHT| ____ |
+ * | RESET LYR | ____ | ALGR | ____ | ____ | ____ | ____ | ____ |  | ____ | ____ | ____ |WLEFT |WDOWN | WUP  |WRIGHT| ____ |
  * `----------------------+------+--------+------+--------+------|  |------+------+------+------+------+--------------------'
  *                            | ____ | INVR | ____ | ____ | ____ |  |      |      |      | ____ | ____ |
  *                            | ____ | ____ | ____ | ____ | ____ |  | BTN1 | BTN3 | BTN2 | ____ | ____ |
@@ -164,7 +162,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------------+------+------+------+------+------|                              |------+------+------+------+------+------|
  * | LOCK LYR   |MLEFT |MDOWN | MUP  |MRIGHT| ____ |                              | ____ |SHIFT | CTRL | ALT  | GUI| ____ |
  * |------------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+------|
- * | TOGGLE LYR |WLEFT |WDOWN | WUP  |WRIGHT| ____ | ____ | ____ |  | ____ | ____ | ____ | ____ | ____ | ALGR | ____ | ____ |
+ * | RESET LYR |WLEFT |WDOWN | WUP  |WRIGHT| ____ | ____ | ____ |  | ____ | ____ | ____ | ____ | ____ | ALGR | ____ | ____ |
  * `----------------------+------+--------+------+--------+------|  |------+------+------+------+------+--------------------'
  *                            | ____ | ____ | ____ | ____ | ____ |  |      |      |      | ____ | ____ |
  *                            | ____ | ____ | ____ | ____ | ____ |  | BTN1 | BTN3 | BTN2 | ____ | ____ |
@@ -189,7 +187,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------------+------+------+------+------+-------|                              |------+------+------+------+------+------|
  * | LOCK LYR   |  F11 |  F4  |  F5  |  F6  | SLock |                              | CLR EEROM | SHIFT| CTRL | ALT  | GUI  | ____ |
  * |------------+------+------+------+------+-------+-------------.  ,-------------+------+------+------+------+------+------|
- * | TOGGLE LYR |  F10 |  F1  |  F2  |  F3  | PAUSE | ____ | ____ |  | ____ | ____ | ____ | ____ | BRGHT- | BRGHT+ | ____ | DEBUG |
+ * | RESET LYR |  F10 |  F1  |  F2  |  F3  | PAUSE | ____ | ____ |  | ____ | ____ | ____ | ____ | BRGHT- | BRGHT+ | ____ | DEBUG |
  * `-----------------------+-------+-------+-------+-------+------|  |------+------+------+------+------+--------------------'
  *                         | _____ | _____ | _____ | _____ | ____ |  | ____ | ____ | ____ | ____ | ____ |
  *                         | RGB Vibrance  | RGB Saturation | RGB Hue   | RGB Mode | RGB Toggle  |  |      |      |      |      |      |
@@ -212,7 +210,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 * |------------+------+------+------+------+------|                              |------+------+------+------+------+-------|
 * |            |  -   |  7   |  8   |  9   |  +   |                              | ___  | ___  | ___  | ___  | ___  |  ___   |
  * |------------+------+------+------+------+------|                              |------+------+------+------+------+--------|
- * |            |  .   |  4   |  5   |  6   |  ,   |                              | ___  | SHIFT| CTRL | ALT  | GUI  |  ___   |
+ * | LOCK LYR  | .   |  4   |  5   |  6   |  ,   |                              | ___  | SHIFT| CTRL | ALT  | GUI  |  ___   |
  * |------------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
  * |            |  /   |  1   |  2   |  3   |  *   |  ___ |  ___ |  |  ___ |  ___ | ___  | ___  |  ___ |  ___ | ___  |  ___   |
  * `----------------------+------+--------+------+--------+------|  |------+------+------+------+------+----------------------'
@@ -237,7 +235,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 * |--------+------+------+------+------+------|                              |------+------+------+------+------+-------|
 * |        |  !   |  ?   |  [   |  ]   |  ^   |                              |   °  |      |  &   |  %   |  |   |   §    |
 * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
-* |        |  \   |  /   |  (   |  )   |  @   |                              |   `  |  {   |  }   |  +   |  =   |   ²    |
+* |  LOCK  |  \   |  /   |  (   |  )   |  @   |                              |   `  |  {   |  }   |  +   |  =   |   ²    |
 * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
 * |        |  #   |  $€  |  <   |  >   |  *   |      |      |  |      |      |   ~  |      |      |  "   |  '   |   ³    |
 * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
@@ -259,11 +257,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 * ,-----------------------------------------------.                              ,------------------------------------------.
 * |            |      |      |      |      |      |                              |      |      |      |      |      |       |
 * |------------+------+------+------+------+------|                              |------+------+------+------+------+-------|
-* | RESET LYR |   Q  |   W  |   E  |   R  |   T  |                              |   Y  |   U  |   I  |   O  |   P  |  | \   |
+* | Next LYR |   Q  |   W  |   E  |   R  |   T  |                              |   Y  |   U  |   I  |   O  |   P  |  | \   |
  * |-----------+------+------+------+------+------|                              |------+------+------+------+------+--------|
  * | LSFT      |   A  |   S  |  D   |   F  |   G  |                              |   H  |   J  |   K  |   L  | ;  : |  ' "   |
  * |-----------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
- * | TOGGLE LYR|   Z  |   X  |   C  |   V  |   B  | CCCV |      |  | Del  |Leader|   N  |   M  | ,  < | . >  | /  ? |  - _   |
+ * | Reset LYR|   Z  |   X  |   C  |   V  |   B  | CCCV |      |  | Del  |Leader|   N  |   M  | ,  < | . >  | /  ? |  - _   |
  * `-------------------------+------+------+------+------+      |  |------+------+------+------+------+----------------------'
  *                       |  ___ | INVERT | MEDIA | NAVI  | MOUSE|  | SYM  | NUM      | FUNC   |        |       |
  *                       |      | Enter  | Escape| Space | Tab  |  | Enter| Bspace   | Delete |        |       |
@@ -271,9 +269,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [QWERTY] = LAYOUT(
   KC_NU, KC_NU, KC_NU, KC_NU, KC_NU, KC_NU,                                                                  KC_NU, KC_NU, KC_NU, KC_NU, KC_NU, KC_NU,
-    TO(BASE), DE_Q, DE_W, DE_E, DE_R, DE_T,                                                                  KC_Y, KC_U,  KC_I,  KC_O,  KC_P,  KC_PIPE,
+    TO(GAME), DE_Q, DE_W, DE_E, DE_R, DE_T,                                                                  KC_Y, KC_U,  KC_I,  KC_O,  KC_P,  KC_PIPE,
     KC_LSFT,  DE_A, DE_S, DE_D, DE_F, DE_G,                                                                  DE_H, DE_J, DE_K, DE_L, DE_X, DE_QUOT,
-TO(GAME), GUI_Z, ALT_X, SHT_C, CTL_V, DE_B, KC_NU,                                                   KC_NU,  DE_N,  CTL_M, SHT_COMM, ALT_DOT, GUI_SLSH, DE_MINS, 
+    TO(BASE), GUI_Z, ALT_X, SHT_C, CTL_V, DE_B, KC_NU,                                                   KC_NU,  DE_N,  CTL_M, SHT_COMM, ALT_DOT, GUI_SLSH, DE_MINS, 
         KC_NU, LT(INVRT, KC_ESC), LT(MEDR, KC_ENT), LT(NAVR, KC_SPC), LT(MOUR, KC_TAB),     LT(SYMBOL, KC_ENT), LT(NSL, KC_BSPC), LT(FUNL, KC_DEL), KC_NU, KC_TRNS
 ),
 
@@ -329,9 +327,7 @@ TO(GAME), GUI_Z, ALT_X, SHT_C, CTL_V, DE_B, KC_NU,                              
                     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS,             KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
 ),
 
-
 };
-
 
 /* ********
 * TAPPING TERM (FIXED)
@@ -347,7 +343,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         case ALT_V:
             return TAPPING_TERM - 20; //180
         case SHT_W:
-            return TAPPING_TERM - 30; //170
+            return TAPPING_TERM - 10; //170
         case CTL_G:
             return TAPPING_TERM - 30; //170
             //return TAPPING_TERM - 30; //170
@@ -395,19 +391,13 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
 }
 
 
-
-
-
-
-
 /* ********
 * MISC
 **********/
-
 bool caps_word_press_user(uint16_t keycode) {
     switch (keycode) {
         // Keycodes that continue Caps Word, with shift applied.
-//        case DE_A ... DE_Z:
+        //case DE_A ... DE_Z:
         case KC_A ... KC_Z:
         case DE_MINS:
             add_weak_mods(MOD_BIT(KC_LSFT));  // Apply shift to next key.
@@ -415,7 +405,7 @@ bool caps_word_press_user(uint16_t keycode) {
 
         // Keycodes that continue Caps Word, without shifting.
         case KC_1 ... KC_0:
-  //      case DE_1 ... DE_0:
+        //case DE_1 ... DE_0:
         case KC_BSPC:
         case KC_DEL:
         case KC_UNDS:
@@ -461,6 +451,25 @@ bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
 /* ********
 * COMBOS
 **********/
+// #define CTRL_W_COMBO CTL_T(KC_W)
+
+// bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+//     switch (keycode) {
+//         case CTRL_W_COMBO:
+//             if (record->event.pressed) {
+//                 // Key is pressed
+//                 register_code(KC_LCTL);
+//                 register_code(KC_W);
+//             } else {
+//                 // Key is released
+//                 unregister_code(KC_W);
+//                 unregister_code(KC_LCTL);
+//             }
+//             return false; // We handled this keypress, QMK should skip it
+//         default:
+//             return true; // Let QMK send the enter press/release events
+//     }
+// }
 
 //Combos for instant activation of shortcuts
 //Name of combos
@@ -485,8 +494,8 @@ enum combo_events  {
     ALT_RIGHT,
     ALT_DOWN,
     RWIN_SHIFT_S,
-    CTRL_W,
-    CTRL_W_B,
+    // CTRL_W,
+    // CTRL_W_B,
 
     BSPC_LSFT_CLEAR,
     QUICK_WINDOWS,
@@ -498,7 +507,6 @@ enum combo_events  {
 
 };
 int COMBO_LEN = COMBO_LENGTH;
-
 
 //Combo Activation
 const uint16_t PROGMEM copy_combo[]  = { CTL_G, DE_C, COMBO_END };
@@ -520,8 +528,8 @@ const uint16_t PROGMEM alt_down_combo[] = { ALT_V, KC_DOWN, COMBO_END };
 const uint16_t PROGMEM alt_left_combo[] = { ALT_V, KC_LEFT, COMBO_END };
 const uint16_t PROGMEM alt_right_combo[] = { ALT_V, KC_RGHT, COMBO_END };
 const uint16_t PROGMEM rwin_shift_s_combo[] = { GUI_K, SHT_OE, DE_S, COMBO_END };
-const uint16_t PROGMEM close_combo[]  = { CTL_G, DE_W, COMBO_END };
-const uint16_t PROGMEM close_combo_b[]  = { DE_R, DE_W, COMBO_END };
+// const uint16_t PROGMEM close_combo[]  = { CTL_G, DE_W, COMBO_END };
+// const uint16_t PROGMEM close_combo_b[]  = { DE_R, DE_W, COMBO_END };
 
 const uint16_t PROGMEM clear_line_combo[] = {KC_BSPC, KC_LSFT, COMBO_END};
 const uint16_t PROGMEM quick_win_combo[]  = {UC_TL4, UC_TR1, COMBO_END };
@@ -548,14 +556,13 @@ combo_t key_combos[COMBO_COUNT] = {
     [ALT_LEFT] = COMBO(alt_left_combo, LALT(KC_LEFT)),
     [ALT_RIGHT] = COMBO(alt_right_combo, LALT(KC_RGHT)),
     [RWIN_SHIFT_S] = COMBO(rwin_shift_s_combo, LGUI(LSFT(DE_S))),
-    [CTRL_W] = COMBO(close_combo, LCTL(DE_W)),
-    [CTRL_W_B] = COMBO(close_combo_b, LCTL(DE_W)),
+    // [CTRL_W] = COMBO(close_combo, LCTL(DE_W)),
+    // [CTRL_W_B] = COMBO(close_combo_b, LCTL(DE_W)),
     [BSPC_LSFT_CLEAR] = COMBO_ACTION(clear_line_combo),
     [QUICK_WINDOWS] = COMBO_ACTION(quick_win_combo),
     [QUICK_VBOX] = COMBO_ACTION(quick_vbox_combo),
     [CTRL_A] = COMBO_ACTION(select_all_combo),
 };
-
 
 
 //Combo Processing
@@ -592,8 +599,8 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
 
 bool get_combo_must_tap(uint16_t combo_index, combo_t *combo) {
     switch (combo_index) {
-        case CTRL_W_B:
-           return false;
+        // case CTRL_W_B:
+           // return false;
         case CTRL_A:
             return false;
     }

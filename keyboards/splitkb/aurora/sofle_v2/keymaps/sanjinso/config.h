@@ -5,8 +5,6 @@
     #define OLED_FONT_H "./oled/glcdfont.c"
 #endif
 
-
-
 //Reduce Firmware Space
 //#define NO_ACTION_ONESHOT
 //#define NO_ACTION_MACRO
@@ -27,7 +25,6 @@
     #define DRV_GREETING       alert_750ms
     #define DRV_MODE_DEFAULT   sharp_tick1
 #endif
-
 
 #ifdef RGBLIGHT_ENABLE
   #define RGBLIGHT_ANIMATIONS
@@ -61,6 +58,7 @@
   #define RGB_MATRIX_KEYPRESSES // reacts to keypresses
   #define RGB_DISABLE_WHEN_USB_SUSPENDED // turn off effects when suspended
   //#define RGB_MATRIX_MAXIMUM_BRIGHTNESS 255
+
   // RGB Matrix Animation modes. Explicitly enabled
   // For full list of effects, see:
   // https://docs.qmk.fm/#/feature_rgb_matrix?id=rgb-matrix-effects

@@ -5,7 +5,7 @@ SRC += features/layer_lock.c
 SRC += features/haptic_utils.c
 
 HAPTIC_ENABLE = yes
-HAPTIC_DRIVER += DRV2605L
+HAPTIC_DRIVER = drv2605l
 
 OLED_ENABLE = yes
 OLED_DRIVER_ENABLE = yes  # Enables the use of OLED dislays
