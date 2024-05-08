@@ -11,6 +11,9 @@
 #define NO_MUSIC_MODE
 #define LAYER_STATE_16BIT
 
+//Try to fix double activation
+#define DEBOUNCE 10
+
 #ifdef HAPTIC_ENABLE
     #define SPLIT_HAPTIC_ENABLE
     // this configuration has no effect because the haptic exclusion is implemented with
