@@ -12,7 +12,7 @@
 #define LAYER_STATE_16BIT
 
 //Try to fix double activation
-#define DEBOUNCE 10
+#define DEBOUNCE 15
 
 #ifdef HAPTIC_ENABLE
     #define SPLIT_HAPTIC_ENABLE
