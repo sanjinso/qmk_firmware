@@ -343,7 +343,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         case ALT_V:
             return TAPPING_TERM - 20; //180
         case SHT_W:
-            return TAPPING_TERM - 10; //170
+            return TAPPING_TERM - 40; //170
         case CTL_G:
             return TAPPING_TERM - 30; //170
             //return TAPPING_TERM - 30; //170
