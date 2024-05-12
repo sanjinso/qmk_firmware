@@ -45,7 +45,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 */
 [BASE] = LAYOUT(
   KC_NU, KC_NU, KC_NU, KC_NU, KC_NU, KC_NU,                                         KC_NU, KC_NU, KC_NU, KC_NU, KC_NU,  KC_NU,  
-  TO(QWERTY),   DE_F,  DE_M,  DE_L,  DE_C,  DE_P,                                     DE_UE,  DE_COMM, DE_DOT, DE_U,  DE_B,  DE_SS,
+  TO(GAME),   DE_F,  DE_M,  DE_L,  DE_C,  DE_P,                                     DE_UE,  DE_COMM, DE_DOT, DE_U,  DE_B,  DE_SS,
   KC_ESC,      DE_S,  DE_N,  DE_R,  DE_T,  DE_D,                                     DE_O,   DE_A,    DE_E,   DE_I,  DE_H,  DE_X,
   TO(BASE), GUI_Z, ALT_V, SHT_W, CTL_G, DE_J, KC_NU,                      KC_NU,   DE_Q,   CTL_AE,  SHT_OE, ALT_Y, GUI_K, DE_MINS,
                         KC_NU, UC_TL1, UC_TL2, UC_TL3, UC_TL4,      UC_TR1, UC_TR2, UC_TR3, KC_LEAD, KC_TRNS
@@ -282,24 +282,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *
  * Y, B, Z, N, M, J, U 
  * ,----------------------------------------------.                              ,------------------------------------------.
- * |            |      |      |      |      |     |                              |      |      |      |      |      |       |
+ * |    ?     |  F6  |  F7  |  F8  |  F9  |  F10   |                              |      |      |      |      |      |       |
  * |------------+------+------+------+------+-----|                              |------+------+------+------+------+-------|
- * | RESET LYR |  I   |   Q  |   T  |   E  |   R  |                               |      |      |      |      |      |        |
+ * | ?        |  I   |   Q  |   T  |   E  |   R   |                               |      |      |      |      |      |        |
  * |-----------+------+------+------+------+------|                               |------+------+------+------+------+--------|
  * | LTAB      | Shift|   A  |   W  |   D  |   F  |                               |      |      |      |      |      |        |
  * |-----------+------+------+------+------+------+--------------.  ,-------------+------+------+------+------+------+--------|
  * |  Z        | CTRL |   X  |   S  |   C  |   G  |       |      |  |      |      |      |      |      |      |      |        |
  * `-------------------------+------+------+------+-------+      |  |------+------+------+------+------+----------------------'
- *                       | ____ |        |        |       |      |  |      |          |         |        |       |
+ *                       |   9  |        |        |       |      |  |      |          |         |        |       |
  *                       |      |  ESC   | ALT/V | Space  |MOD1/H|  |      |          |         |        |       |
  *                       `--------------------------------------'  `---------------------------------------------'
  */
 [GAME] = LAYOUT(
-  KC_NU, KC_NU, KC_NU, KC_NU, KC_NU, KC_NU,                                                      KC_NU, KC_NU, KC_NU, KC_NU, KC_NU, KC_NU,
-    TO(BASE),KC_I,   KC_Q,    KC_T,    KC_E,    KC_R,                                            KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+    KC_NU, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10,                                                      KC_NU, KC_NU, KC_NU, KC_NU, KC_NU, KC_NU,
+    KC_NU, KC_I,   KC_Q,    KC_T,    KC_E,    KC_R,                                            KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
     KC_TAB,  KC_LSFT, KC_A,    KC_W,    KC_D,    KC_F,                                           KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
     KC_Z,    KC_LCTL, KC_X,    KC_S,    KC_C,    KC_G, KC_NU,                            KC_NU,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-               KC_NU, KC_ESC, LALT_T(DE_V), KC_SPC,  LT(GAME_2, KC_H),     KC_ENT, KC_BSPC, KC_DEL, KC_TRNS, KC_TRNS
+               KC_9, KC_ESC, LALT_T(DE_V), KC_SPC,  LT(GAME_2, KC_H),     KC_ENT, KC_BSPC, KC_DEL, KC_TRNS, KC_TRNS
 ),
 
 
@@ -307,23 +307,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * Base Layer: GAMING_2
  *
  * ,-----------------------------------------------.                              ,------------------------------------------.
-* |            |      |      |      |      |      |                              |      |      |      |      |      |       |
+* |     ~      |  F1 |  F2  |  F3  |   F4 |  F5   |                              |      |      |      |      |      |       |
 * |------------+------+------+------+------+------|                              |------+------+------+------+------+-------|
-* | RESET LYR |  F1  |  F2  |  F3  |  F4  |  F5  |                               |      |      |      |      |      |        |
+* | RESET LYR |  1   |  2   |   3  |  4   |   5   |                               |      |      |      |      |      |        |
  * |-----------+------+------+------+------+------|                               |------+------+------+------+------+--------|
- * |     J     |   1  |   2  |   3  |   4  |   5  |                               |      |      |      |      |      |        |
+ * |     J     | SHFT|   K  |   L  |   O  |   P   |                               |      |      |      |      |      |        |
  * |-----------+------+------+------+------+------+--------------.  ,-------------+------+------+------+------+------+--------|
- * |     U     |   Y  |   B  |   N  |   M  |   Z  |       |      |  |      |      |      |      |      |      |      |        |
+ * |     U     |   Y  |   B  |   N  |   M  |   ,  |       |      |  |      |      |      |      |      |      |      |        |
  * `-------------------------+------+------+------+-------+      |  |------+------+------+------+------+----------------------'
  *                       | ____ |        |        |       |      |  |      |          |         |        |       |
  *                       |      |        |        | Space |  H   |  |      |          |         |        |       |
  *                       `--------------------------------------'  `---------------------------------------------'
  */
 [GAME_2] = LAYOUT(
-   KC_NU, KC_NU, KC_NU, KC_NU, KC_NU, KC_NU,                                                  KC_NU, KC_NU, KC_NU, KC_NU, KC_NU, KC_NU,
-   TO(BASE),KC_F1, KC_F2,  KC_F3,   KC_F4,   KC_F5,                                           KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-    KC_J,    KC_1, KC_2,    KC_3,    KC_4,    KC_5,                                           KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-    KC_U,    KC_Y, KC_B,    KC_N,    KC_M,    KC_Z, KC_NU,                             KC_NU,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+   DE_TILD, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5,                                                  KC_NU, KC_NU, KC_NU, KC_NU, KC_NU, KC_NU,
+   TO(BASE),KC_1, KC_2,  KC_3,   KC_4,   KC_5,                                           KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+    KC_J,    KC_LSFT, KC_K,    KC_L,    KC_O,    KC_P,                                           KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+    KC_U,    KC_Y, KC_B,    KC_N,    KC_M,    DE_COMM, KC_NU,                             KC_NU,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
                     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS,             KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
 ),
 
