@@ -2,24 +2,8 @@
 #include "keymap_german.h"
 #include "keycodes.h"
  
-// #include "features/layer_lock.h"
-
 uint16_t copy_paste_timer;
 
-/* ********
-* TAP DANCE
-**********/
-enum {
-    TD_CURNCY,
-};
-
-tap_dance_action_t tap_dance_actions[] = {
-    [TD_CURNCY] = ACTION_TAP_DANCE_DOUBLE(DE_DLR, DE_EURO),
-};
-
-/* ********
-* KEYMAPS
-**********/
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /*
 * Base Layer: BUTECK-XCV
@@ -36,10 +20,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 *                         `-------------------------------------'  `----------------------------------------'
 */
 [BASE] = LAYOUT(
-  TO(GAME), DE_F,  DE_M,  DE_L,  DE_C,  DE_P,                                  DE_UE,  DE_COMM, DE_DOT, DE_U,  DE_B,  DE_SS,
-  KC_NU,    DE_S,  DE_N,  DE_R,  DE_T,  DE_D,                                  DE_O,   DE_A,    DE_E,   DE_I,  DE_H,  DE_X,
-  TO(BASE), GUI_Z, ALT_V, SHT_W, CTL_G, DE_J,  KC_NU, KC_NU,  KC_NU,  KC_NU,  DE_Q,   CTL_AE,  SHT_OE, ALT_Y, GUI_K, DE_MINS,
-                       KC_NU, UC_TL1, UC_TL2, UC_TL3, UC_TL4,  UC_TR1, UC_TR2, UC_TR3, KC_LEAD, KC_TRNS
+  TO(BASE),   DE_F,         DE_M,           DE_L,         DE_C,         DE_P,                                            DE_UE,  DE_COMM,      DE_DOT,        DE_U,         DE_B,         DE_SS,
+  KC_NU,      LGUI_T(DE_S), LALT_T(DE_N),   LCTL_T(DE_R), LSFT_T(DE_T), DE_D,                                            DE_O,   LSFT_T(DE_A), LCTL_T(DE_E),  LALT_T(DE_I), LGUI_T(DE_H), DE_X,
+  TO(NSL), DE_Z,         ALGR_T(DE_V),   DE_W,         DE_G,         DE_J, KC_NU,   KC_RST,       KC_NU,     KC_NU,   DE_Q,   DE_AE,        DE_OE,         ALGR_T(DE_Y), DE_K,         DE_MINS,
+                KC_NU, LT(INVRT, KC_ESC), LT(MEDR, KC_ENT), LT(NAVR, KC_SPC), LT(MOUR, KC_TAB),      LT(SYMBOL, KC_ENT), LT(NSL, KC_BSPC), LT(FUNL, KC_DEL), KC_NU, KC_NU
 ),
 
 
@@ -58,10 +42,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 *                          `-------------------------------------'  `----------------------------------------'
 */
 [INVRT] = LAYOUT(
-  DE_SS,   DE_B, DE_U,   DE_DOT, DE_COMM, DE_UE,                                    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-  DE_X,    DE_H, DE_I,   DE_E,   DE_A,    DE_O,                                     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-  KC_BSPC, GUI_K, ALT_Y, SHT_OE, CTL_AE,  DE_Q,  KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
+  DE_SS,   DE_B, DE_U,   DE_DOT, DE_COMM, DE_UE,                                              KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+  DE_X,    LGUI_T(DE_H), LALT_T(DE_I), LCTL_T(DE_E), LSFT_T(DE_A), DE_O,                      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+  KC_BSPC, DE_K, DE_Y,   DE_OE,  DE_AE,   DE_Q,  KC_TRNS, KC_TRNS,          KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,           KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
 ),
 
 
@@ -80,10 +64,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 *                        `-------------------------------------'  `--------------------------------------'
 */
 [MEDR] = LAYOUT(
-  TO(BASE), KC_NU,  KC_NU,   KC_NU,   KC_NU,   KC_NU,                                        KC_TOG, KC_MOD,        KC_HUI,              KC_SAI,        KC_VAI,  KC_NU,
-  TO(MEDR), KC_NU,  KC_F14,  KC_F15,  KC_F16,  KC_NU,                                        KC_NU,  KC_MPRV,       KC_VOLD,             KC_VOLU,       KC_MNXT, KC_NU,
-  TO(BASE), KC_LGUI,KC_LALT, KC_LSFT, KC_LCTL,  KC_NU, KC_NU, KC_NU,  KC_NU,         KC_NU,   KC_NU,  KC_MEDIA_STOP, KC_MEDIA_PLAY_PAUSE, KC_AUDIO_MUTE, KC_NU,   KC_NU,
-                       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_MEDIA_STOP, KC_MEDIA_PLAY_PAUSE, KC_AUDIO_MUTE, KC_TRNS, KC_TRNS
+  TO(BASE),  KC_NU,   KC_NU,    KC_NU,    KC_NU,   KC_NU,                                               KC_TOG,  KC_MOD,              KC_HUI,        KC_SAI,        KC_VAI,  KC_NU,
+  TO(MEDR),  KC_LGUI, KC_LALT,  KC_LCTL,  KC_LSFT, KC_NU,                                               KC_NU,   KC_MPRV,             KC_VOLD,       KC_VOLU,       KC_MNXT, KC_NU,
+  TO(BASE),  KC_NU,   KC_ALGR,  KC_NU,    KC_NU,   KC_NU, KC_NU, KC_NU,   KC_NU,               KC_NU,   KC_NU,   KC_MEDIA_STOP, KC_MEDIA_PLAY_PAUSE, KC_AUDIO_MUTE, KC_NU,   KC_NU,
+                           KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,   KC_MEDIA_STOP, KC_MEDIA_PLAY_PAUSE, KC_AUDIO_MUTE, KC_TRNS, KC_TRNS
 
 ),
 
@@ -104,10 +88,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 */
 
 [NAVR] = LAYOUT(
-  TO(BASE),  KC_NU,   KC_NU,   KC_NU,   KC_NU,   KC_NU,                                KC_COPY_C, KC_CUT_C,  KC_PASTE_C, KC_UNDO_C, KC_REDO_C, KC_NU,
-  TO(NAVR),  KC_NU,   KC_NU,   KC_NU,   KC_NU,   KC_NU,                                KC_CAPS,   KC_LEFT,   KC_DOWN,    KC_UP,     KC_RGHT,   KC_NU,
-  TO(BASE),  KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, KC_NU, KC_NU, KC_NU,  KC_NU,   KC_NU, KC_INS,    KC_HOME,   KC_PGDN,    KC_PGUP,   KC_END,    KC_NU,
-                         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
+  TO(BASE),  KC_NU,   KC_NU,    KC_NU,    KC_NU,   KC_NU,                              KC_REDO_C, KC_UNDO_C, KC_CUT_C, KC_COPY_C, KC_PASTE_C, KC_NU,
+  TO(NAVR),  KC_LGUI, KC_LALT,  KC_LCTL,  KC_LSFT, KC_NU,                              KC_CAPS,   KC_LEFT,   KC_DOWN,  KC_UP,     KC_RGHT,    KC_NU,
+  TO(BASE),  KC_NU,   KC_ALGR,  KC_NU,    KC_NU,   KC_NU, KC_NU, KC_NU,  KC_NU, KC_NU, KC_INS,    KC_HOME,   KC_PGDN,  KC_PGUP,   KC_END,     KC_NU,
+                           KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
 ),
 
 
@@ -127,31 +111,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 */
 [MOUR] = LAYOUT(
   TO(BASE), KC_NU,   KC_NU,   KC_NU,   KC_NU,   KC_NU,                                 KC_NU, KC_NU,   KC_NU,   KC_NU,   KC_NU,   KC_NU,
-  TO(MOUR), KC_NU,  KC_NU,   KC_NU,   KC_NU,   KC_NU,                                 KC_NU, KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_NU,
-  TO(BASE), KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, KC_NU, KC_NU, KC_NU,   KC_NU,   KC_NU, KC_NU, KC_WH_L, KC_WH_D, KC_WH_U, KC_WH_R, KC_NU,
+  TO(MOUR), KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, KC_NU,                                 KC_NU, KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_NU,
+  TO(BASE), KC_NU,   KC_ALGR, KC_NU,   KC_NU,   KC_NU, KC_NU, KC_NU,   KC_NU,   KC_NU, KC_NU, KC_WH_L, KC_WH_D, KC_WH_U, KC_WH_R, KC_NU,
                       KC_NP,   KC_NP,  KC_NU,   KC_NU, KC_NU, KC_BTN1, KC_BTN3, KC_BTN2, KC_NP, KC_NP
-),
-
-
-/*
- * MouseControl Layer: MOUR INVRT
- *
-* ,-----------------------------------------------.                              ,------------------------------------------.
-* | RESET LYR  | ____ | ____ | ____ | ____ | ____ |                              | ____ | ____ | ____ | ____ | ____ | ____ |
- * |------------+------+------+------+------+------|                              |------+------+------+------+------+------|
- * | LOCK LYR   |MLEFT |MDOWN | MUP  |MRIGHT| ____ |                              | ____ |SHIFT | CTRL | ALT  | GUI| ____ |
- * |------------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+------|
- * | RESET LYR |WLEFT |WDOWN | WUP  |WRIGHT| ____ | ____ | ____ |  | ____ | ____ | ____ | ____ | ____ | ALGR | ____ | ____ |
- * `----------------------+------+--------+------+--------+------|  |------+------+------+------+------+--------------------'
- *                            | ____ | ____ | ____ | ____ | ____ |  |      |      |      | ____ | ____ |
- *                            | ____ | ____ | ____ | ____ | ____ |  | BTN1 | BTN3 | BTN2 | ____ | ____ |
- *                            `----------------------------- ----'  `----------------------------------'
-*/
-[MOURI] = LAYOUT(
-  TO(BASE), KC_NU,   KC_NU,   KC_NU,   KC_NU,   KC_NU,                                 KC_NU,   KC_NU,   KC_NU,   KC_NU,   KC_NU,   KC_NU,
-  TO(BASE),    KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_NU,                                 KC_NU,   KC_NU,   KC_NU,   KC_NU,   KC_NU,   KC_NU,
-  TO(BASE), KC_WH_L, KC_WH_D, KC_WH_U, KC_WH_R, KC_NU, KC_NU, KC_NU,   KC_NU,   KC_NU, KC_NU,   KC_LCTL, KC_LSFT, KC_LALT, KC_LGUI, KC_NU,
-                              KC_NP, KC_NP, KC_BTN2, KC_BTN3, KC_BTN1, KC_BTN1, KC_BTN3, KC_BTN2, KC_NP, KC_TRNS
 ),
 
 
@@ -170,10 +132,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                         `--------------------------------------'  `----------------------------------'
 */ 
 [FUNL] = LAYOUT(
-  TO(BASE),  KC_F12, KC_F7,  KC_F8,  KC_F9, KC_PSCR,                                        DM_REC1, DM_PLY1,  DM_REC2,            DM_PLY2,          KC_NU,   DM_RSTP,
-  TO(FUNL),  KC_F11, KC_F4,  KC_F5,  KC_F6, KC_SCROLL_LOCK,                                 EE_CLR,  KC_LOCK,  KC_BRIGHTNESS_DOWN, KC_BRIGHTNESS_UP, KC_NU,   KC_NU,
-  TO(BASE),  KC_F10, KC_F1,  KC_F2,  KC_F3, KC_PAUS,        KC_NU, KC_NU,  KC_NU,   KC_NU,  KC_NU,   KC_LCTL,  KC_LSFT,            KC_LALT,          KC_LGUI, DB_TOGG,
-                             RGB_VAI, RGB_SAI, RGB_HUI, RGB_MOD, RGB_TOG,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
+  TO(BASE),  KC_F12, KC_F7,  KC_F8,  KC_F9, KC_PSCR,                                 KC_NU, KC_NU,   KC_NU,   KC_NU,   KC_RST,  KC_NU,
+  TO(FUNL),  KC_F11, KC_F4,  KC_F5,  KC_F6, KC_SLCK,                                 KC_NU, KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI, KC_NU,
+  TO(BASE),  KC_F10, KC_F1,  KC_F2,  KC_F3, KC_PAUS, KC_NU,  KC_NU,    KC_NU, KC_NU, KC_NU, KC_NU,   KC_NU,   KC_ALGR, KC_NU,   KC_NU,
+                            KC_NP,  KC_NP, KC_APP,  KC_SPC, KC_TAB,   KC_NU, KC_NU, KC_NU, KC_NP,   KC_NP
 ),
 
 
@@ -192,13 +154,35 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                        `--------------------------------------'  `----------------------------------'
 */
 [NSL] = LAYOUT(
-  TO(BASE),  DE_MINS, DE_7, DE_8, DE_9, DE_PLUS,                                  KC_NA, KC_NA,  KC_NA,   KC_NA,   KC_NU,   KC_NU,
-  TO(BASE),   DE_DOT,  DE_4, DE_5, DE_6, DE_COMM,                                    KC_NA, KC_NA,  KC_NA,   KC_NA,   KC_NA,   KC_NU,
-  TO(BASE),DE_BSLS, DE_1, DE_2, DE_3, DE_ASTR, KC_NU, KC_NU,       KC_NU,         KC_NU,  KC_NA, KC_LCTL,   KC_LSFT, KC_LALT, KC_LGUI, KC_NU,
-                         KC_NP, KC_BSPC, KC_SPC, DE_0, DE_EQL,     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,   KC_TRNS
+  TO(BASE), DE_LBRC, DE_7,  DE_8,  DE_9,  DE_RBRC,                                 KC_NA, KC_NA,   KC_NA,   KC_NA,   KC_RST,  KC_NU,
+  TO(NSL),  DE_SCLN, DE_4,  DE_5,  DE_6,  DE_EQL,                                  KC_NA, KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI, KC_NU,
+  TO(QWERTY),  KC_GRV,  DE_1,  DE_2,  DE_3,  DE_BSLS, KC_NU, KC_NU,     KC_NU, KC_NU, KC_NA, KC_NA,   KC_NA,   KC_ALGR, KC_NA,   KC_NU,
+                          KC_NP, KC_NP, DE_DOT,  DE_0,  DE_MINS,   KC_NA, KC_NA, KC_NA, KC_NP,   KC_NP
 ),
 
-      
+
+/*
+ * Number Layer: NSSL
+ *
+ * ,-----------------------------------------------.                              ,-------------------------------------------.
+ * |            |  {   |  &   |  *   |  (  |   }   |                              | ___  | ___  | ___  | ___  | ___  |  ___   |
+ * |------------+------+------+------+------+------|                              |------+------+------+------+------+--------|
+ * |            |  :   |  $   |  %   |  ^  |   +   |                              | ___  | SHIFT| CTRL | ALT  | GUI  |  ___   |
+ * |------------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
+ * |            |  ~   |  !   |  @   |  #   |  |   |  ___ |  ___ |  |  ___ |  ___ | ___  | ___  |  ___ |  ___ | ___  |  ___   |
+ * `----------------------+------+--------+------+--------+------|  |------+------+------+------+------+----------------------'
+ *                        |  ___ |  ___   |  ___ |  ___   | ___  |  |  ___ |  ___ |  ___ | ___  | ___  |
+ *                        |  ___ |  ___   |   (  |   )    |  _   |  |      |      |      |      |      |
+ *                        `--------------------------------------'  `----------------------------------'
+*/
+[NSSL] = LAYOUT(
+  TO(BASE),  KC_LCBR, KC_AMPR, KC_ASTR, KC_LPRN,  KC_RCBR,                                 KC_NA, KC_NA,   KC_NA,   KC_NA,   KC_RST,  KC_NU,
+  TO(NSSL),  KC_COLN, KC_DLR,  KC_PERC, KC_CIRC,  KC_PLUS,                                 KC_NA, KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI, KC_NU,
+  TO(BASE),  KC_TILD, KC_EXLM, KC_AT,   KC_HASH,  KC_PIPE, KC_NU, KC_NU,     KC_NU, KC_NU, KC_NA, KC_NA,   KC_NA,   KC_ALGR, KC_NA,   KC_NU,
+                               KC_NP, KC_NP, KC_GT, KC_RPRN, KC_UNDS,     KC_NA, KC_NA, KC_NA, KC_NP,  KC_NP
+),
+
+  
  /*
   * Symbol Layer: SYMBOL
   *
@@ -213,12 +197,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   *                        |      |      |      |      |      |  |      |      |      |      |      |
   *                        `----------------------------------'  `----------------------------------'
   */
-[SYMBOL] = LAYOUT(
-TO(BASE), DE_EXLM, DE_QUES,   DE_LBRC, DE_RBRC, DE_CIRC,                                     DE_DEG, KC_TRNS, DE_AMPR,DE_PERC,DE_PIPE,DE_SECT,
-TO(SYMBOL), DE_BSLS, DE_SLSH,  DE_LPRN, DE_RPRN, DE_AT,                                      DE_GRV, DE_LCBR, DE_RCBR, DE_PLUS, DE_EQL, DE_SUP2,
-TO(BASE), DE_HASH, TD(TD_CURNCY), DE_LABK, DE_RABK, DE_ASTR, KC_NU, KC_NU,  KC_NU,   KC_NU, DE_TILD, KC_TRNS,  KC_TRNS, DE_DQUO,  DE_QUOT, DE_SUP3,
-                            KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
-),
+    [SYMBOL] = LAYOUT(
+      TO(BASE), DE_EXLM, DE_QUES,   DE_LBRC, DE_RBRC, DE_CIRC,                                     DE_DEG, KC_TRNS, DE_AMPR,DE_PERC,DE_PIPE,DE_SECT,
+      TO(SYMBOL), DE_BSLS, DE_SLSH,  DE_LPRN, DE_RPRN, DE_AT,                                      DE_GRV, DE_LCBR, DE_RCBR, DE_PLUS, DE_EQL, DE_SUP2,
+      TO(BASE), DE_HASH, DE_DLR, DE_LABK, DE_RABK, DE_ASTR, KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS, DE_TILD, KC_TRNS,  KC_TRNS, DE_DQUO,  DE_QUOT, DE_SUP3,
+                                 KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
+    ),
 
 
 /*
@@ -236,305 +220,42 @@ TO(BASE), DE_HASH, TD(TD_CURNCY), DE_LABK, DE_RABK, DE_ASTR, KC_NU, KC_NU,  KC_N
  *                       `--------------------------------------'  `-------------------------------------------'
  */
     [QWERTY] = LAYOUT(
-    TO(GAME), DE_Q,  DE_W,  DE_E,  DE_R, DE_T,                                                                  KC_Y, KC_U,  KC_I,  KC_O,  KC_P,  KC_PIPE,
-    KC_LSFT,  DE_A,  DE_S,  DE_D,  DE_F, DE_G,                                                                  DE_H, DE_J, DE_K, DE_L, DE_X, DE_QUOT,
-    TO(BASE), GUI_Z, ALT_X, SHT_C, CTL_V, DE_B, KC_NU, KC_NU,                        KC_NU,     KC_NU,  DE_N,  CTL_M, SHT_COMM, ALT_DOT, GUI_SLSH, DE_MINS,
-    KC_NU, LT(INVRT, KC_ESC), LT(MEDR, KC_ENT), LT(NAVR, KC_SPC), LT(MOUR, KC_TAB),  LT(SYMBOL, KC_ENT), LT(NSL, KC_BSPC), LT(FUNL, KC_DEL), KC_NU, KC_TRNS
-),
+      TO(BASE), DE_Q,         DE_W,         DE_E,         DE_R,         DE_T,                                          KC_Y, KC_U,         KC_I,            KC_O,         KC_P,            KC_PIPE,
+      KC_LSFT,  LGUI_T(DE_A), LALT_T(DE_S), LCTL_T(DE_D), LSFT_T(DE_F), DE_G,                                          DE_H, LSFT_T(DE_J), LCTL_T(DE_K),    LALT_T(DE_L), LGUI_T(DE_SCLN), DE_QUOT,
+      TO(GAMEPAD),  DE_Z,         DE_X,         DE_C,         DE_V,         DE_B,   _______, _______,     KC_DEL, _______, DE_N, DE_M,         DE_COMM,         DE_DOT,       DE_SLSH,         DE_MINS,
+                  KC_NU, LT(INVRT, KC_ENT), LT(MEDR, KC_ESC), LT(NAVR, KC_SPC), LT(MOUR, KC_TAB),     LT(SYMBOL, KC_ENT), LT(NSL, KC_BSPC), LT(FUNL, KC_DEL), KC_NU, KC_NU
+    ),
 
 
  /*
  * Base Layer: GAMING
- * C V Y X      G T B H Z N M J U     K I
  *
- * Y, B, Z, N, M, J, U
- * ,----------------------------------------------.                              ,------------------------------------------.
- * |    ? 0    |  1  |  2  |  3  |  4  |  5   |                              |      |      |      |      |      |       |
- * |------------+------+------+------+------+-----|                              |------+------+------+------+------+-------|
- * | ?  9      |  I   |   Q  |   T  |   E  |   R   |                               |      |      |      |      |      |        |
+ * ,-------------------------------------------.                                  ,-------------------------------------------.
+ * | RESET LYR |   K  |   Q  |   X  |   E  |   R  |                               |      |      |      |      |      |        |
  * |-----------+------+------+------+------+------|                               |------+------+------+------+------+--------|
- * | LTAB      | Shift|   A  |   W  |   D  |   F  |                               |      |      |      |      |      |        |
+ * | LTAB      |   G  |   A  |   W  |   D  |   F  |                               |      |      |      |      |      |        |
  * |-----------+------+------+------+------+------+--------------.  ,-------------+------+------+------+------+------+--------|
- * |  Z        | CTRL |   X  |   S  |   C  |   G  |       |      |  |      |      |      |      |      |      |      |        |
- * `-------------------------+------+------+------+-------+      |  |------+------+------+------+------+----------------------'
- *                       |   9  |        |        |       |      |  |      |          |         |        |       |
- *                       |      |  ESC   | ALT/V | Space  |MOD1/H|  |      |          |         |        |       |
- *                       `--------------------------------------'  `---------------------------------------------'
- */
-[GAME] = LAYOUT(
-    KC_9, KC_I,   KC_Q,    KC_T,    KC_E,    KC_R,                                            KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-    KC_TAB,  KC_LSFT, KC_A,    KC_W,    KC_D,    KC_F,                                           KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-    KC_Z,    KC_LCTL, KC_X,    KC_S,    KC_C,    KC_G, KC_NU, KC_NU,      KC_NU,            KC_NU,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-               KC_9, KC_ESC, LALT_T(DE_V), KC_SPC,  LT(GAME_2, KC_H),     KC_ENT, KC_BSPC, KC_DEL, KC_TRNS, KC_TRNS
-),
-
-
- /*
- * Base Layer: GAMING_2
- *
- * ,-----------------------------------------------.                              ,------------------------------------------.
-* |     F6      |  F7 |  F8  |  F9  |   F10 |  F11   |                              |      |      |      |      |      |       |
-* |------------+------+------+------+------+------|                              |------+------+------+------+------+-------|
-* | RESET LYR |  F1   | F2   |   F3  |  F4   |   F5   |                               |      |      |      |      |      |        |
- * |-----------+------+------+------+------+------|                               |------+------+------+------+------+--------|
- * |     J     | SHFT|   K  |   L  |   O  |   P   |                               |      |      |      |      |      |        |
- * |-----------+------+------+------+------+------+--------------.  ,-------------+------+------+------+------+------+--------|
- * |     U     |   Y  |   B  |   N  |   M  |   ,  |       |      |  |      |      |      |      |      |      |      |        |
+ * | LCTL      | LSFT |   Z  |   S  |   C  |   V  |       |      |  |      |      |      |      |      |      |      |        |
  * `-------------------------+------+------+------+-------+      |  |------+------+------+------+------+----------------------'
  *                       | ____ |        |        |       |      |  |      |          |         |        |       |
- *                       |      |        |        | Space |  H   |  |      |          |         |        |       |
+ *                       |      | MAGIC  |   V    | Space |  H   |  |      |          |         |        |       |
  *                       `--------------------------------------'  `---------------------------------------------'
  */
-[GAME_2] = LAYOUT(
-   TO(BASE),KC_F1, KC_F2,  KC_F3,   KC_F4,   KC_F5,                                           KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-    KC_J,    KC_LSFT, KC_K,    KC_L,    KC_O,    KC_P,                                           KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-    KC_U,    KC_Y, KC_B,    KC_N,    KC_M,    DE_COMM, KC_NU, KC_NU,           KC_NU,                 KC_NU,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS,             KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
-),
+
+    [GAMEPAD] = LAYOUT(
+        TO(BASE),KC_K,    KC_Q,    KC_X,    KC_E,    KC_R,                                                 _______, _______, _______, _______, _______, _______,
+        KC_TAB,  KC_G,    KC_A,    KC_W,    KC_D,    KC_F,                                                 _______, _______, _______, _______, _______, _______,
+        KC_LCTL, KC_LSFT, KC_Z,    KC_S,    KC_C,    KC_V,  _______, _______,      _______, LALT(KC_PSCR), _______, _______, _______, _______, _______, _______,
+                              _______, MAGIC_TOGGLE_NKRO, KC_V, KC_SPC, KC_H,      _______, _______, _______, _______, _______
+    ),
 
 };
-
 
 layer_state_t layer_state_set_user(layer_state_t state) {
-    return update_tri_layer_state(state, BASE, QWERTY, GAME);
+    return update_tri_layer_state(state, BASE, QWERTY, GAMEPAD);
 }
 
-
-
-/* ********
-* TAPPING TERM (FIXED)
-**********/
-
-//Tapping Term 200
-//How long does it have to be pressed to activate layer instead of keypress
-//Lower Tapping term is needed for quicker activation of modifier. However there are Combos too.
-uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case GUI_Z:
-            return TAPPING_TERM + 10; //210
-        case ALT_V:
-            return TAPPING_TERM - 20; //180
-        case SHT_W:
-            return TAPPING_TERM - 40; //170
-        case CTL_G:
-            return TAPPING_TERM - 30; //170
-            //return TAPPING_TERM - 30; //170
-
-        case GUI_K:
-            return TAPPING_TERM + 10; //210
-        case ALT_Y:
-            return TAPPING_TERM + 30; //230
-        case CTL_AE:
-            return TAPPING_TERM + 30; //230
-        case SHT_OE:
-            return TAPPING_TERM - 90; //110
-            //return TAPPING_TERM - 50; //170
-            //return TAPPING_TERM - 30; //170
-
-        default:
-            return TAPPING_TERM;
-
-        case UC_TR2:
-            return TAPPING_TERM - 45; //120
-        case UC_TR1:
-            return TAPPING_TERM - 50; //140
-    }
-}
-
-
-
-/* *********
-* QUICK TAPPING TERM (DOUBLE_PRESS_AUTO_REPEAT_TERM)
-**********/
-//QUICK TAPPING TERM 80
-uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        //BSPC -> NUML
-        case UC_TR2:
-            return QUICK_TAP_TERM -20; //60
-        //DEL -> FUNL
-        case UC_TR3:
-            return QUICK_TAP_TERM -10; //70
-        //ENTER -> SYM
-        case UC_TR1:
-            return QUICK_TAP_TERM -10; //60
-        default:
-            return QUICK_TAP_TERM;
-    }
-}
-
-/************************
-* COMBOS
-***********************/
-//Name of combos
-#ifdef COMBO_ENABLE
-enum combo_events  {
-    CTRL_C,
-    CTRL_V,
-    CTRL_X,
-    CTRL_S,
-    CTRL_Z,
-    SHIFT_CTRL_Z,
-
-    ALT_TAB,
-    CTRL_TAB,
-    SHIFT_CTRL_TAB,
-
-    WIN_CTRL_LEFT,
-    WIN_CTRL_RIGHT,
-
-    ALT_UP,
-    ALT_LEFT,
-    ALT_RIGHT,
-    ALT_DOWN,
-    RWIN_SHIFT_S,
-    // CTRL_W,
-    // CTRL_W_B,
-
-    BSPC_LSFT_CLEAR,
-    QUICK_WINDOWS,
-    QUICK_VBOX,
-
-    CTRL_A,
-
-    COMBO_LENGTH
-
-};
-int COMBO_LEN = COMBO_LENGTH;
-
-//Combo Activation
-const uint16_t PROGMEM copy_combo[]  = { CTL_G, DE_C, COMBO_END };
-const uint16_t PROGMEM paste_combo[] = { CTL_G, DE_V, COMBO_END };
-const uint16_t PROGMEM cut_combo[] = { CTL_G, DE_X, COMBO_END };
-const uint16_t PROGMEM save_combo[]  = { CTL_G, DE_S, COMBO_END };
-const uint16_t PROGMEM undo_combo[]  = { CTL_G, DE_Z, COMBO_END };
-const uint16_t PROGMEM redo_combo[]  = { CTL_G, SHT_W, DE_Z, COMBO_END };
-
-const uint16_t PROGMEM alt_tab_combo[] = { ALT_V, UC_TL4, COMBO_END };
-const uint16_t PROGMEM ctrl_tab_combo[] = { CTL_G, UC_TL4, COMBO_END };
-const uint16_t PROGMEM shift_ctrl_tab_combo[] = { CTL_G, SHT_W, UC_TL4, COMBO_END };
-
-const uint16_t PROGMEM win_ctrl_left_combo[] = { GUI_Z, CTL_G, KC_LEFT, COMBO_END };
-const uint16_t PROGMEM win_ctrl_right_combo[] = { GUI_Z, CTL_G, KC_RGHT, COMBO_END };
-
-const uint16_t PROGMEM alt_up_combo[] = { ALT_V, KC_UP, COMBO_END };
-const uint16_t PROGMEM alt_down_combo[] = { ALT_V, KC_DOWN, COMBO_END };
-const uint16_t PROGMEM alt_left_combo[] = { ALT_V, KC_LEFT, COMBO_END };
-const uint16_t PROGMEM alt_right_combo[] = { ALT_V, KC_RGHT, COMBO_END };
-const uint16_t PROGMEM rwin_shift_s_combo[] = { GUI_K, SHT_OE, DE_S, COMBO_END };
-// const uint16_t PROGMEM close_combo[]  = { CTL_G, DE_W, COMBO_END };
-// const uint16_t PROGMEM close_combo_b[]  = { DE_R, DE_W, COMBO_END };
-
-const uint16_t PROGMEM clear_line_combo[] = {KC_BSPC, KC_LSFT, COMBO_END};
-const uint16_t PROGMEM quick_win_combo[]  = {UC_TL4, UC_TR1, COMBO_END };
-const uint16_t PROGMEM quick_vbox_combo[]  = {GUI_Z, CTL_G, COMBO_END };
-
-const uint16_t PROGMEM select_all_combo[] = { CTL_G, DE_A, COMBO_END };
-
-
-//Combo Action
-combo_t key_combos[COMBO_COUNT] = {
-    [CTRL_C]  = COMBO(copy_combo, LCTL(DE_C)),
-    [CTRL_V] = COMBO(paste_combo, LCTL(DE_V)),
-    [CTRL_X] = COMBO(cut_combo, LCTL(DE_X)),
-    [CTRL_S]  = COMBO(save_combo, LCTL(DE_S)),
-    [CTRL_Z] = COMBO(undo_combo, LCTL(DE_V)),
-    [SHIFT_CTRL_Z] = COMBO(redo_combo, LCA_T(DE_Z)),
-    [ALT_TAB] = COMBO_ACTION(alt_tab_combo),
-    [CTRL_TAB] = COMBO(ctrl_tab_combo, LCTL(KC_TAB)),
-    [SHIFT_CTRL_TAB] = COMBO(shift_ctrl_tab_combo, LCA_T(KC_TAB)),
-    [WIN_CTRL_LEFT] = COMBO(win_ctrl_left_combo, LGUI(LCTL(KC_TAB))),
-    [WIN_CTRL_RIGHT] = COMBO(win_ctrl_right_combo, LGUI(LCTL(KC_TAB))),
-    [ALT_UP] = COMBO(alt_up_combo, LALT(KC_UP)),
-    [ALT_DOWN] = COMBO(alt_down_combo, LALT(KC_DOWN)),
-    [ALT_LEFT] = COMBO(alt_left_combo, LALT(KC_LEFT)),
-    [ALT_RIGHT] = COMBO(alt_right_combo, LALT(KC_RGHT)),
-    [RWIN_SHIFT_S] = COMBO(rwin_shift_s_combo, LGUI(LSFT(DE_S))),
-    // [CTRL_W] = COMBO(close_combo, LCTL(DE_W)),
-    // [CTRL_W_B] = COMBO(close_combo_b, LCTL(DE_W)),
-    [BSPC_LSFT_CLEAR] = COMBO_ACTION(clear_line_combo),
-    [QUICK_WINDOWS] = COMBO_ACTION(quick_win_combo),
-    [QUICK_VBOX] = COMBO_ACTION(quick_vbox_combo),
-    [CTRL_A] = COMBO_ACTION(select_all_combo),
-};
-
-
-//Combo Processing
-void process_combo_event(uint16_t combo_index, bool pressed) {
-    action_tapping_process((keyrecord_t){});
-    switch(combo_index) {
-        case ALT_TAB:
-            if (pressed) {
-                tap_code16(LALT(KC_TAB));
-                //DRV_pulse(7);
-                //DRV_pulse(sh_dblsharp_tick);
-            }
-            break;
-        case BSPC_LSFT_CLEAR:
-            if (pressed) {
-                tap_code16(KC_END);
-                tap_code16(S(KC_HOME));
-                tap_code16(KC_BSPC);
-            }
-            break;
-        case QUICK_WINDOWS:
-            if (pressed) {
-                tap_code16(KC_LGUI);
-            }
-            break;
-        case QUICK_VBOX:
-            if (pressed) {
-                register_code16(KC_LGUI);
-                tap_code16(KC_LCTL);
-            }
-            break;
-    }
-}
-
-bool get_combo_must_tap(uint16_t combo_index, combo_t *combo) {
-    switch (combo_index) {
-        // case CTRL_W_B:
-           // return false;
-        case CTRL_A:
-            return false;
-    }
-
-    /*
-    switch (combo_index) {
-        case CTRL_TAB:
-           return false;
-    }
-    */
-    return true;
-}
-
-bool get_combo_must_press_in_order(uint16_t combo_index, combo_t *combo) {
-    switch (combo_index) {
-        case RWIN_SHIFT_S:
-           return false;
-        case SHIFT_CTRL_Z:
-           return false;
-        case SHIFT_CTRL_TAB:
-           return false;
-        case CTRL_TAB:
-           return false;
-        case WIN_CTRL_LEFT:
-           return false;
-        case WIN_CTRL_RIGHT:
-           return false;
-        case BSPC_LSFT_CLEAR:
-            return false;
-        case QUICK_WINDOWS:
-            return false;
-    }
-    return true;
-}
-
-#endif
-
-/************************
-* OLED
-***********************/
+//OLED CONFIGURATION
 #ifdef OLED_ENABLE
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
 	return OLED_ROTATION_180;
@@ -584,10 +305,13 @@ static void render_status(void) {
         case MOUR:
             oled_write_P(PSTR("Mouse"), false);
             break;
+        case NSSL:
+            oled_write_P(PSTR("Symbols"), false);
+            break;
         case NSL:
             oled_write_P(PSTR("Numbers"), false);
             break;
-        case FUNL:;
+        case FUNL:5;
             oled_write_P(PSTR("Functions"), false);
             break;
         case INVRT:
@@ -599,7 +323,7 @@ static void render_status(void) {
         case QWERTY:
             oled_write_P(PSTR("QWERTY"), false);
             break;
-        case GAME:
+        case GAMEPAD:
             oled_write_P(PSTR("Game"), false);
             break;
         default:
@@ -608,14 +332,10 @@ static void render_status(void) {
     oled_write_P(PSTR("\n"), false);
 
     // Host Keyboard LED Status
-    // uint8_t led_usb_state = host_keyboard_leds();
-    // oled_write_P(IS_LED_ON(led_usb_state, USB_LED_NUM_LOCK)    ? PSTR("NUMLCK ") : PSTR("       "), false);
-    // oled_write_P(IS_LED_ON(led_usb_state, USB_LED_CAPS_LOCK)   ? PSTR("CAPLCK ") : PSTR("       "), false);
-    // oled_write_P(IS_LED_ON(led_usb_state, USB_LED_SCROLL_LOCK) ? PSTR("SCRLCK ") : PSTR("       "), false);
-    led_t led_usb_state = host_keyboard_led_state();
-    oled_write_P(led_usb_state.num_lock    ? PSTR("NUMLCK ") : PSTR("       "), false);
-    oled_write_P(led_usb_state.caps_lock   ? PSTR("CAPLCK ") : PSTR("       "), false);
-    oled_write_P(led_usb_state.scroll_lock ? PSTR("SCRLCK ") : PSTR("       "), false);    
+    uint8_t led_usb_state = host_keyboard_leds();
+    oled_write_P(IS_LED_ON(led_usb_state, USB_LED_NUM_LOCK)    ? PSTR("NUMLCK ") : PSTR("       "), false);
+    oled_write_P(IS_LED_ON(led_usb_state, USB_LED_CAPS_LOCK)   ? PSTR("CAPLCK ") : PSTR("       "), false);
+    oled_write_P(IS_LED_ON(led_usb_state, USB_LED_SCROLL_LOCK) ? PSTR("SCRLCK ") : PSTR("       "), false);
 }
 
 bool oled_task_user(void) {

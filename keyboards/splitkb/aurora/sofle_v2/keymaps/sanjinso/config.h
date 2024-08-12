@@ -12,18 +12,18 @@
 #define LAYER_STATE_16BIT
 
 //Try to fix double activation
-//#define DEBOUNCE 15
+#define DEBOUNCE 20
 
 #ifdef HAPTIC_ENABLE
     #define SPLIT_HAPTIC_ENABLE
     // this configuration has no effect because the haptic exclusion is implemented with
     // __attribute__((weak)) bool get_haptic_enabled_key(uint16_t keycode, keyrecord_t *record)
-    // in the default keymap and reacts only to mouse clicks. 
+    // in the default keymap and reacts only to mouse clicks.
     #define NO_HAPTIC_MOD
     #define NO_HAPTIC_FN
     #define NO_HAPTIC_ALPHA
     #define NO_HAPTIC_PUNCTUATION
-    #define NO_HAPTIC_NAV 
+    #define NO_HAPTIC_NAV
     #define NO_HAPTIC_NUMERIC
     #define DRV_GREETING       alert_750ms
     #define DRV_MODE_DEFAULT   sharp_tick1
@@ -160,7 +160,7 @@
 
 //Caps Word
 #define CAPS_WORD_IDLE_TIMEOUT 5000
-#define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
+//#define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
 #define CAPS_WORD_INVERT_ON_SHIFT
 
 //Change Both CTLs to Magic Command
@@ -168,8 +168,8 @@
 
 
 
-// If key is pressed quickly and released while 
-//Tap-Hold Button is pressed: do hold action. 
+// If key is pressed quickly and released while
+//Tap-Hold Button is pressed: do hold action.
 #define PERMISSIVE_HOLD
 //#define PERMISSIVE_HOLD_PER_KEY
 
@@ -177,7 +177,7 @@
 // do hold action, even if its under tapping term (not recommended
 //for fast typists and homerow mods)
 //  Try using combos instead
-//#define HOLD_ON_OTHER_KEY_PRESS 
+//#define HOLD_ON_OTHER_KEY_PRESS
 //#define HOLD_ON_OTHER_KEY_PRESS_PER_KEY
 
 //Bilateral Combos for Shift (Homerow Rollover)

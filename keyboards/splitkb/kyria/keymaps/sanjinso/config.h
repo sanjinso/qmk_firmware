@@ -4,6 +4,9 @@
   #define OLED_DISPLAY_128X64
 #endif
 
+#define NO_MUSIC_MODE
+#define LAYER_STATE_16BIT
+
 #ifdef RGBLIGHT_ENABLE
   #define RGBLIGHT_ANIMATIONS
   #define RGBLIGHT_HUE_STEP 8
@@ -22,12 +25,20 @@
 #define ENCODER_RESOLUTION 2
 
 #define TAPPING_TERM 200
+#define TAPPING_TERM_PER_KEY
 
-// Prevent normal rollover on alphas from accidentally triggering mods.
-#define IGNORE_MOD_TAP_INTERRUPT
+//#define QUICK_TAP_TERM
+#define QUICK_TAP_TERM_PER_KEY
+#define QUICK_TAP_TERM 90
+
 
 // Enable rapid switch from tap to hold, disables double tap hold auto-repeat.
 #define TAPPING_FORCE_HOLD
+
+// If key is pressed quickly and released while
+//Tap-Hold Button is pressed: do hold action.
+#define PERMISSIVE_HOLD
+//#define PERMISSIVE_HOLD_PER_KEY
 
 // Recommended for heavy chording.
 #define QMK_KEYS_PER_SCAN 4
@@ -40,6 +51,20 @@
 #undef MOUSEKEY_WHEEL_DELAY
 #define MOUSEKEY_WHEEL_DELAY    0
 #undef MOUSEKEY_MAX_SPEED
-#define MOUSEKEY_MAX_SPEED      6
+#define MOUSEKEY_MAX_SPEED      8
 #undef MOUSEKEY_TIME_TO_MAX
-#define MOUSEKEY_TIME_TO_MAX    64
+#define MOUSEKEY_TIME_TO_MAX    52
+
+
+#ifdef COMBO_ENABLE
+  #define COMBO_VARIABLE_LEN
+  #define COMBO_COUNT COMBO_VARIABLE_LEN
+  #define COMBO_MUST_PRESS_IN_ORDER
+  #define COMBO_MUST_TAP_PER_COMBO
+  #define COMBO_TERM 45
+  //#define COMBO_HOLD_TERM 175  // how long at least one of the combo keys must be held to trigger
+#endif
+
+
+#define LEADER_TIMEOUT 300
+#define LAYER_LOCK_IDLE_TIMEOUT 60000
