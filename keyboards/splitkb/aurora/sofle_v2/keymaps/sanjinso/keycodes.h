@@ -51,7 +51,7 @@
 #define CTL_H LCTL_T(DE_H)
 #define SHT_OE RSFT_T(DE_OE)
 #define ALT_UE LALT_T(DE_UE)
-#define GUI_COMMA LGUI_T(DE_COMMA)
+#define GUI_COMM LGUI_T(DE_COMM)
 /*****************************/
 
 // Left-hand Bottom row mods QWERTY

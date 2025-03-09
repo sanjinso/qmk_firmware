@@ -1,8 +1,8 @@
 
 # SRC += features/layer_lock.c
 
-OLED_ENABLE = yes
-OLED_DRIVER_ENABLE = yes  # Enables the use of OLED displays
+OLED_ENABLE = no
+OLED_DRIVER_ENABLE = no  # Enables the use of OLED displays
 ENCODER_ENABLE = no      # Enables the use of one or more encoders
 RGBLIGHT_ENABLE = no      # Enable keyboard RGB underglow
 LEADER_ENABLE = no       # Enable the Leader Key feature

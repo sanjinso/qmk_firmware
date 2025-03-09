@@ -70,7 +70,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_NU, KC_NU, KC_NU, KC_NU, KC_NU, KC_NU,                                       KC_NU,  KC_NU, KC_NU,  KC_NU,  KC_NU,     KC_NU,
   TO(GAME), DE_V,  DE_M,  DE_L,  DE_C,  DE_P,                                     DE_X,   DE_F,  DE_O,   DE_U,   DE_J,      DE_SS,
   KC_ESC,   DE_S,  DE_T,  DE_R,  DE_D,  DE_Y,                                     DE_DOT, DE_N,  DE_A,   DE_E,   DE_I,      DE_AE,
-  TO(BASE), GUI_Z, ALT_K, SHT_Q, CTL_G, DE_W,  KC_NU,                      KC_NU, DE_B,   CTL_H, SHT_OE, ALT_UE, GUI_COMMA, DE_MINS,
+  TO(BASE), GUI_Z, ALT_K, SHT_Q, CTL_G, DE_W,  KC_NU,                      KC_NU, DE_B,   CTL_H, SHT_OE, ALT_UE, GUI_COMM, DE_MINS,
                         KC_NU, UC_TL1, UC_TL2, UC_TL3, UC_TL4,     UC_TR1, UC_TR2, UC_TR3, KC_LEAD, KC_TRNS
 ),
 
@@ -392,44 +392,43 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     }
 }
 
+// // | RESET LYR |   Z  |   K  |   Q  |   G  |   W  |       |              |        |   B  |   H  |   Ö  |   Ü  |   ,  |   -   |
+// //STURDY
+// //Tapping Term 200
+// //How long does it have to be pressed to activate layer instead of keypress
+// //Lower Tapping term is needed for quicker activation of modifier. However there are Combos too.
+// uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+//     switch (keycode) {
+//         case GUI_Z:
+//             return TAPPING_TERM + 10; //210
+//         case ALT_K:
+//             return TAPPING_TERM - 20; //180
+//         case SHT_Q:
+//             return TAPPING_TERM - 40; //170
+//         case CTL_G:
+//             return TAPPING_TERM - 30; //170
+//             //return TAPPING_TERM - 30; //170
 
-// | RESET LYR |   Z  |   K  |   Q  |   G  |   W  |       |              |        |   B  |   H  |   Ö  |   Ü  |   ,  |   -   |
-//STURDY
-//Tapping Term 200
-//How long does it have to be pressed to activate layer instead of keypress
-//Lower Tapping term is needed for quicker activation of modifier. However there are Combos too.
-uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case GUI_Z:
-            return TAPPING_TERM + 10; //210
-        case ALT_K:
-            return TAPPING_TERM - 20; //180
-        case SHT_Q:
-            return TAPPING_TERM - 40; //170
-        case CTL_W:
-            return TAPPING_TERM - 30; //170
-            //return TAPPING_TERM - 30; //170
+//         case GUI_COMM:
+//             return TAPPING_TERM + 10; //210
+//         case ALT_UE:
+//             return TAPPING_TERM + 30; //230
+//         case SHT_OE:
+//             return TAPPING_TERM - 90; //110
+//             //return TAPPING_TERM - 50; //170
+//             //return TAPPING_TERM - 30; //170
+//         case CTL_H:
+//             return TAPPING_TERM + 30; //230
 
-        case GUI_COMMA:
-            return TAPPING_TERM + 10; //210
-        case ALT_UE:
-            return TAPPING_TERM + 30; //230
-        case SHT_OE:
-            return TAPPING_TERM - 90; //110
-            //return TAPPING_TERM - 50; //170
-            //return TAPPING_TERM - 30; //170
-        case CTL_H:
-            return TAPPING_TERM + 30; //230
+//         default:
+//             return TAPPING_TERM;
 
-        default:
-            return TAPPING_TERM;
-
-        case UC_TR2:
-            return TAPPING_TERM - 45; //120
-        case UC_TR1:
-            return TAPPING_TERM - 50; //140
-    }
-}
+//         case UC_TR2:
+//             return TAPPING_TERM - 45; //120
+//         case UC_TR1:
+//             return TAPPING_TERM - 50; //140
+//     }
+// }
 
 
 /* *********
