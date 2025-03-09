@@ -4,11 +4,11 @@ EXTRAFLAGS += -flto
 SRC += features/layer_lock.c
 SRC += features/haptic_utils.c
 
-HAPTIC_ENABLE = yes
-HAPTIC_DRIVER = drv2605l
+HAPTIC_ENABLE = no
+# HAPTIC_DRIVER = drv2605l
 
-OLED_ENABLE = yes
-OLED_DRIVER_ENABLE = yes  # Enables the use of OLED dislays
+OLED_ENABLE = no
+OLED_DRIVER_ENABLE = no  # Enables the use of OLED dislays
 
 MOUSEKEY_ENABLE = yes # Mouse keys
 EXTRAKEY_ENABLE = yes # Audio control and System control
