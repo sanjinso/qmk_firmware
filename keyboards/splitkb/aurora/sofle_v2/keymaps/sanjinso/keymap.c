@@ -611,6 +611,8 @@ enum combo_events  {
     // CTRL_W,
     // CTRL_W_B,
 
+    QUICK_TERMINAL,
+
     BSPC_LSFT_CLEAR,
     QUICK_WINDOWS,
     QUICK_VBOX,
@@ -644,12 +646,15 @@ const uint16_t PROGMEM alt_down_combo[] = { CKC_ALT_V, KC_DOWN, COMBO_END };
 const uint16_t PROGMEM alt_left_combo[] = { CKC_ALT_V, KC_LEFT, COMBO_END };
 const uint16_t PROGMEM alt_right_combo[] = { CKC_ALT_V, KC_RGHT, COMBO_END };
 const uint16_t PROGMEM rwin_shift_s_combo[] = { CKC_GUI_K, CKC_SHT_OE, DE_S, COMBO_END };
+
+const uint16_t PROGMEM quick_terminal_combo[] = { CKC_GUI_Z, UC_TR1, COMBO_END };
+
 // const uint16_t PROGMEM close_combo[]  = { CKC_CTL_G, DE_W, COMBO_END };
 // const uint16_t PROGMEM close_combo_b[]  = { DE_R, DE_W, COMBO_END };
 
-const uint16_t PROGMEM clear_line_combo[] = {KC_BSPC, KC_LSFT, COMBO_END};
-const uint16_t PROGMEM quick_win_combo[]  = {UC_TL4, UC_TR1, COMBO_END };
-const uint16_t PROGMEM quick_vbox_combo[]  = {GUI_Z, CKC_CTL_G, COMBO_END };
+const uint16_t PROGMEM clear_line_combo[] = { KC_BSPC, KC_LSFT, COMBO_END };
+const uint16_t PROGMEM quick_win_combo[]  = { UC_TL4, UC_TR1, COMBO_END };
+const uint16_t PROGMEM quick_vbox_combo[]  = { CKC_GUI_Z, CKC_CTL_G, COMBO_END };
 
 const uint16_t PROGMEM select_all_combo[] = { CKC_CTL_G, DE_A, COMBO_END };
 
@@ -660,10 +665,10 @@ combo_t key_combos[COMBO_COUNT] = {
     [CTRL_V] = COMBO(paste_combo, LCTL(DE_V)),
     [CTRL_X] = COMBO(cut_combo, LCTL(DE_X)),
     [CTRL_S]  = COMBO(save_combo, LCTL(DE_S)),
-    [CTRL_Z] = COMBO(undo_combo, LCTL(DE_V)),
+    [CTRL_Z] = COMBO(undo_combo, LCTL(DE_Z)),
     [SHIFT_CTRL_Z] = COMBO(redo_combo, LCA_T(DE_Z)),
     [ALT_TAB] = COMBO_ACTION(alt_tab_combo),
-    [CTRL_TAB] = COMBO(ctrl_tab_combo, LCTL(KC_TAB)),
+    [CTRL_TAB] = COMBO_ACTION(ctrl_tab_combo),
     [SHIFT_CTRL_TAB] = COMBO(shift_ctrl_tab_combo, LCA_T(KC_TAB)),
     [ALT_SPACE] = COMBO(alt_space_combo, LALT(KC_SPC)),
     [WIN_CTRL_LEFT] = COMBO(win_ctrl_left_combo, LGUI(LCTL(KC_TAB))),
@@ -673,6 +678,9 @@ combo_t key_combos[COMBO_COUNT] = {
     [ALT_LEFT] = COMBO(alt_left_combo, LALT(KC_LEFT)),
     [ALT_RIGHT] = COMBO(alt_right_combo, LALT(KC_RGHT)),
     [RWIN_SHIFT_S] = COMBO(rwin_shift_s_combo, LGUI(LSFT(DE_S))),
+
+    [QUICK_TERMINAL] = COMBO_ACTION(quick_terminal_combo),
+
     // [CTRL_W] = COMBO(close_combo, LCTL(DE_W)),
     // [CTRL_W_B] = COMBO(close_combo_b, LCTL(DE_W)),
     [BSPC_LSFT_CLEAR] = COMBO_ACTION(clear_line_combo),
@@ -689,8 +697,14 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
         case ALT_TAB:
             if (pressed) {
                 tap_code16(LALT(KC_TAB));
-                //DRV_pulse(7);
-                //DRV_pulse(sh_dblsharp_tick);
+            }
+            break;
+        case CTRL_TAB:
+            if (pressed) {
+                register_code(KC_LCTL); // Hold CTRL
+                tap_code(KC_TAB);       // Press TAB once
+            } else {
+                unregister_code(KC_LCTL); // Release CTRL
             }
             break;
         case BSPC_LSFT_CLEAR:
@@ -711,6 +725,14 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
                 tap_code16(KC_LCTL);
             }
             break;
+        case QUICK_TERMINAL:
+            if (pressed) {
+                register_code16(KC_LGUI);
+                tap_code16(KC_ENT);
+            } else {
+                unregister_code(KC_LGUI); // Release CTRL
+            }            
+            break;
     }
 }
 
@@ -719,6 +741,10 @@ bool get_combo_must_tap(uint16_t combo_index, combo_t *combo) {
         // case CTRL_W_B:
            // return false;
         case CTRL_A:
+            return false;
+        case ALT_SPACE:
+            return false;
+        case QUICK_TERMINAL:
             return false;
     }
 
@@ -749,35 +775,13 @@ bool get_combo_must_press_in_order(uint16_t combo_index, combo_t *combo) {
             return false;
         case QUICK_WINDOWS:
             return false;
+        case QUICK_TERMINAL:
+            return false;
         case ALT_SPACE:
             return false;
     }
     return true;
 }
-
-
-
-//Stop Combos from autorepeating when holding
-/**/
-/*void process_record_user(uint16_t keycode, keyrecord_t *record) {*/
-/*    switch (keycode) {*/
-/*        case MY_MACRO:*/
-/*            if (record->event.pressed) {*/
-/*                // Key is pressed*/
-/*                register_code(KC_CTRL);*/
-/*                register_code(KC_TAB);*/
-/*            } else {*/
-/*                // Key is released*/
-/*                unregister_code(KC_TAB);*/
-/*                unregister_code(KC_CTRL);*/
-/*            }*/
-/*            return false; // We handled this keypress, QMK should skip it*/
-/*        default:*/
-/*            return true; // Let QMK send the enter press/release events*/
-/*    }*/
-/*}*/
-/**/
-
 
 
 #endif
