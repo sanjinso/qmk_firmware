@@ -13,12 +13,11 @@ OLED_DRIVER_ENABLE = no  # Enables the use of OLED dislays
 MOUSEKEY_ENABLE = yes # Mouse keys
 EXTRAKEY_ENABLE = yes # Audio control and System control
 
-RGBLIGHT_ENABLE = yes
-RGB_MATRIX_ENABLE = yes
+RGBLIGHT_ENABLE = no
+RGB_MATRIX_ENABLE = no
 
 ENCODER_ENABLE = yes      # Enables the use of one or more encoders
 #ENCODER_MAP_ENABLE = yes
-
 
 TAP_DANCE_ENABLE = yes
 KEY_LOCK_ENABLE = yes
@@ -39,4 +38,5 @@ COMMAND_ENABLE = yes
 DYNAMIC_MACRO_ENABLE = yes
 
 
-CONSOLE_ENABLE = yes
+
+DEFERRED_EXEC_ENABLE = yes
