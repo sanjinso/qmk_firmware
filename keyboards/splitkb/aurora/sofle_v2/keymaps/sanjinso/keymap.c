@@ -24,35 +24,36 @@ bool is_alt_tab_active = false;
 uint16_t alt_tab_timer = 0;
 
 enum custom_keycodes {
-    SMTD_KEYCODES_BEGIN = SAFE_RANGE,
-    CKC_GUI_Z,
-    CKC_ALT_V,
-    CKC_SHT_W,
-    CKC_CTL_G,
-    CKC_GUI_K,
-    CKC_ALT_Y,
-    CKC_SHT_OE,
-    CKC_CTL_AE,
-    SMTD_KEYCODES_END,
+    // SMTD_KEYCODES_BEGIN = SAFE_RANGE,
+    // CKC_GUI_Z,
+    // CKC_ALT_V,
+    // CKC_SHT_W,
+    // CKC_CTL_G,
+    // CKC_GUI_K,
+    // CKC_ALT_Y,
+    // CKC_SHT_OE,
+    // CKC_CTL_AE,
+    // SMTD_KEYCODES_END,
 
     LLOCK = SAFE_RANGE,
 };
 
-#include "sm_td/sm_td.h"
+// #include "sm_td/sm_td.h"
 
-void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
-    switch (keycode) {
-        SMTD_MT(CKC_GUI_Z, DE_Z, KC_LEFT_GUI)
-        SMTD_MT(CKC_ALT_V, DE_V, KC_LEFT_ALT)
-        SMTD_MT(CKC_SHT_W, DE_W, KC_LSFT)
-        SMTD_MT(CKC_CTL_G, DE_G, KC_LEFT_CTRL)
+// void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
+//     switch (keycode) {
+//         SMTD_MT(CKC_GUI_Z, DE_Z, KC_LEFT_GUI)
+//         SMTD_MT(CKC_ALT_V, DE_V, KC_LEFT_ALT)
+//         SMTD_MT(CKC_SHT_W, DE_W, KC_LSFT)
+//         SMTD_MT(CKC_CTL_G, DE_G, KC_LEFT_CTRL)
         
-        SMTD_MT(CKC_GUI_K, DE_K, KC_LEFT_GUI)
-        SMTD_MT(CKC_ALT_Y, DE_Y, KC_LEFT_ALT)
-        SMTD_MT(CKC_SHT_OE, DE_OE, KC_RSFT)
-        SMTD_MT(CKC_CTL_AE, DE_AE, KC_LEFT_CTRL)
-    }
-}
+//         SMTD_MT(CKC_GUI_K, DE_K, KC_LEFT_GUI)
+//         SMTD_MT(CKC_ALT_Y, DE_Y, KC_LEFT_ALT)
+//         SMTD_MT(CKC_SHT_OE, DE_OE, KC_RSFT)
+//         SMTD_MT(CKC_CTL_AE, DE_AE, KC_LEFT_CTRL)
+//     }
+// }
+
 
 /* ********
 * TAP DANCE
@@ -87,7 +88,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_NU, KC_NU, KC_NU, KC_NU, KC_NU, KC_NU,                                         KC_NU, KC_NU, KC_NU, KC_NU, KC_NU,  KC_NU,
   TO(STRDY),   DE_F,  DE_M,  DE_L,  DE_C,  DE_P,                                     DE_UE,  DE_COMM, DE_DOT, DE_U,  DE_B,  DE_SS,
   KC_ESC,      DE_S,  DE_N,  DE_R,  DE_T,  DE_D,                                     DE_O,   DE_A,    DE_E,   DE_I,  DE_H,  DE_X,
-  TO(BASE), CKC_GUI_Z, CKC_ALT_V, CKC_SHT_W, CKC_CTL_G, DE_J, KC_NU,                      KC_NU,   DE_Q,   CKC_CTL_AE,  CKC_SHT_OE, CKC_ALT_Y, CKC_GUI_K, DE_MINS,
+  TO(BASE), GUI_Z, ALT_V, SHT_W, CTL_G, DE_J, KC_NU,                      KC_NU,   DE_Q,   CTL_AE,  SHT_OE, ALT_Y, GUI_K, DE_MINS,
                         KC_NU, UC_TL1, UC_TL2, UC_TL3, UC_TL4,      UC_TR1, UC_TR2, UC_TR3, KC_LEAD, KC_TRNS
 ),
 
@@ -110,7 +111,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_NU, KC_NU, KC_NU, KC_NU, KC_NU, KC_NU,                                       KC_NU,  KC_NU, KC_NU,  KC_NU,  KC_NU,     KC_NU,
   TO(GAME), DE_V,  DE_M,  DE_L,  DE_C,  DE_P,                                     DE_X,   DE_F,  DE_O,   DE_U,   DE_J,      DE_SS,
   KC_ESC,   DE_S,  DE_T,  DE_R,  DE_D,  DE_Y,                                     DE_DOT, DE_N,  DE_A,   DE_E,   DE_I,      DE_AE,
-  TO(BASE), CKC_GUI_Z, ALT_K, SHT_Q, CKC_CTL_G, DE_W,  KC_NU,                      KC_NU, DE_B,   CTL_H, CKC_SHT_OE, ALT_UE, GUI_COMM, DE_MINS,
+  TO(BASE), GUI_Z, ALT_K, SHT_Q, CTL_G, DE_W,  KC_NU,                      KC_NU, DE_B,   CTL_H, SHT_OE, ALT_UE, GUI_COMM, DE_MINS,
                         KC_NU, UC_TL1, UC_TL2, UC_TL3, UC_TL4,     UC_TR1, UC_TR2, UC_TR3, KC_LEAD, KC_TRNS
 ),
 
@@ -134,7 +135,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_NU, KC_NU, KC_NU, KC_NU, KC_NU, KC_NU,                                           KC_NU, KC_NU, KC_NU, KC_NU, KC_NU,  KC_NU,
   DE_SS,   DE_B,  DE_U,  DE_DOT, DE_COMM, DE_UE,                                      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
   DE_X,    DE_H, DE_I, DE_E,  DE_A,   DE_O,                                           KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-  KC_BSPC, CKC_GUI_K,  CKC_ALT_Y,  CKC_SHT_OE,  CKC_CTL_AE,   DE_Q, KC_NU,                      KC_NU,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+  KC_BSPC, GUI_K,  ALT_Y,  SHT_OE,  CTL_AE,   DE_Q, KC_NU,                      KC_NU,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
                        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
 ),
 
@@ -333,7 +334,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_NU, KC_NU, KC_NU, KC_NU, KC_NU, KC_NU,                                                                  KC_NU, KC_NU, KC_NU, KC_NU, KC_NU, KC_NU,
     TO(GAME), DE_Q, DE_W, DE_E, DE_R, DE_T,                                                                  KC_Y, KC_U,  KC_I,  KC_O,  KC_P,  KC_PIPE,
     KC_LSFT,  DE_A, DE_S, DE_D, DE_F, DE_G,                                                                  DE_H, DE_J, DE_K, DE_L, DE_X, DE_QUOT,
-    TO(BASE), CKC_GUI_Z, ALT_X, SHT_C, CTL_V, DE_B, KC_NU,                                                   KC_NU,  DE_N,  CTL_M, SHT_COMM, ALT_DOT, GUI_SLSH, DE_MINS,
+    TO(BASE), GUI_Z, ALT_X, SHT_C, CTL_V, DE_B, KC_NU,                                                   KC_NU,  DE_N,  CTL_M, SHT_COMM, ALT_DOT, GUI_SLSH, DE_MINS,
         KC_NU, LT(INVRT, KC_ESC), LT(MEDR, KC_ENT), LT(NAVR, KC_SPC), LT(MOUR, KC_TAB),     LT(SYMBOL, KC_ENT), LT(NSL, KC_BSPC), LT(FUNL, KC_DEL), KC_NU, KC_TRNS
 ),
 
@@ -401,23 +402,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //Lower Tapping term is needed for quicker activation of modifier. However there are Combos too.
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case CKC_GUI_Z:
+        case GUI_Z:
             return TAPPING_TERM + 10; //210
-        case CKC_ALT_V:
+        case ALT_V:
             return TAPPING_TERM - 20; //180
-        case CKC_SHT_W:
+        case SHT_W:
             return TAPPING_TERM - 40; //170
-        case CKC_CTL_G:
+        case CTL_G:
             return TAPPING_TERM - 30; //170
             //return TAPPING_TERM - 30; //170
 
-        case CKC_GUI_K:
+        case GUI_K:
             return TAPPING_TERM + 10; //210
-        case CKC_ALT_Y:
+        case ALT_Y:
             return TAPPING_TERM + 30; //230
-        case CKC_CTL_AE:
+        case CTL_AE:
             return TAPPING_TERM + 30; //230
-        case CKC_SHT_OE:
+        case SHT_OE:
             return TAPPING_TERM - 90; //110
             //return TAPPING_TERM - 50; //170
             //return TAPPING_TERM - 30; //170
@@ -439,13 +440,13 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 // //Lower Tapping term is needed for quicker activation of modifier. However there are Combos too.
 // uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 //     switch (keycode) {
-//         case CKC_GUI_Z:
+//         case GUI_Z:
 //             return TAPPING_TERM + 10; //210
 //         case ALT_K:
 //             return TAPPING_TERM - 20; //180
 //         case SHT_Q:
 //             return TAPPING_TERM - 40; //170
-//         case CKC_CTL_G:
+//         case CTL_G:
 //             return TAPPING_TERM - 30; //170
 //             //return TAPPING_TERM - 30; //170
 
@@ -453,7 +454,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 //             return TAPPING_TERM + 10; //210
 //         case ALT_UE:
 //             return TAPPING_TERM + 30; //230
-//         case CKC_SHT_OE:
+//         case SHT_OE:
 //             return TAPPING_TERM - 90; //110
 //             //return TAPPING_TERM - 50; //170
 //             //return TAPPING_TERM - 30; //170
@@ -526,7 +527,7 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case GUI_G:
             return true;
-        case CKC_ALT_V:
+        case ALT_V:
             return true;
         default:
             return false;
@@ -548,17 +549,17 @@ bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
 }
 */
 
-/* ********
-* SM_TD Library
-**********/
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    if (!process_smtd(keycode, record)) {
-        return false;
-    }
-    // your code here
+// /* ********
+// * SM_TD Library
+// **********/
+// bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+//     if (!process_smtd(keycode, record)) {
+//         return false;
+//     }
+//     // your code here
 
-   return true;
-}
+//    return true;
+// }
 
 /* ********
 * COMBOS
@@ -625,38 +626,38 @@ enum combo_events  {
 int COMBO_LEN = COMBO_LENGTH;
 
 //Combo Activation
-const uint16_t PROGMEM copy_combo[]  = { CKC_CTL_G, DE_C, COMBO_END };
-const uint16_t PROGMEM paste_combo[] = { CKC_CTL_G, DE_V, COMBO_END };
-const uint16_t PROGMEM cut_combo[] = { CKC_CTL_G, DE_X, COMBO_END };
-const uint16_t PROGMEM save_combo[]  = { CKC_CTL_G, DE_S, COMBO_END };
-const uint16_t PROGMEM undo_combo[]  = { CKC_CTL_G, DE_Z, COMBO_END };
-const uint16_t PROGMEM redo_combo[]  = { CKC_CTL_G, CKC_SHT_W, DE_Z, COMBO_END };
+const uint16_t PROGMEM copy_combo[]  = { CTL_G, DE_C, COMBO_END };
+const uint16_t PROGMEM paste_combo[] = { CTL_G, DE_V, COMBO_END };
+const uint16_t PROGMEM cut_combo[] = { CTL_G, DE_X, COMBO_END };
+const uint16_t PROGMEM save_combo[]  = { CTL_G, DE_S, COMBO_END };
+const uint16_t PROGMEM undo_combo[]  = { CTL_G, DE_Z, COMBO_END };
+const uint16_t PROGMEM redo_combo[]  = { CTL_G, SHT_W, DE_Z, COMBO_END };
 
-const uint16_t PROGMEM alt_tab_combo[] = { CKC_ALT_V, UC_TL4, COMBO_END };
-const uint16_t PROGMEM ctrl_tab_combo[] = { CKC_CTL_G, UC_TL4, COMBO_END };
-const uint16_t PROGMEM shift_ctrl_tab_combo[] = { CKC_CTL_G, CKC_SHT_W, UC_TL4, COMBO_END };
+const uint16_t PROGMEM alt_tab_combo[] = { ALT_V, UC_TL4, COMBO_END };
+const uint16_t PROGMEM ctrl_tab_combo[] = { CTL_G, UC_TL4, COMBO_END };
+const uint16_t PROGMEM shift_ctrl_tab_combo[] = { CTL_G, SHT_W, UC_TL4, COMBO_END };
 
-const uint16_t PROGMEM alt_space_combo[] = { CKC_ALT_V, UC_TL3, COMBO_END };
+const uint16_t PROGMEM alt_space_combo[] = { ALT_V, UC_TL3, COMBO_END };
 
-const uint16_t PROGMEM win_ctrl_left_combo[] = { CKC_GUI_Z, CKC_CTL_G, KC_LEFT, COMBO_END };
-const uint16_t PROGMEM win_ctrl_right_combo[] = { CKC_GUI_Z, CKC_CTL_G, KC_RGHT, COMBO_END };
+const uint16_t PROGMEM win_ctrl_left_combo[] = { GUI_Z, CTL_G, KC_LEFT, COMBO_END };
+const uint16_t PROGMEM win_ctrl_right_combo[] = { GUI_Z, CTL_G, KC_RGHT, COMBO_END };
 
-const uint16_t PROGMEM alt_up_combo[] = { CKC_ALT_V, KC_UP, COMBO_END };
-const uint16_t PROGMEM alt_down_combo[] = { CKC_ALT_V, KC_DOWN, COMBO_END };
-const uint16_t PROGMEM alt_left_combo[] = { CKC_ALT_V, KC_LEFT, COMBO_END };
-const uint16_t PROGMEM alt_right_combo[] = { CKC_ALT_V, KC_RGHT, COMBO_END };
-const uint16_t PROGMEM rwin_shift_s_combo[] = { CKC_GUI_K, CKC_SHT_OE, DE_S, COMBO_END };
+const uint16_t PROGMEM alt_up_combo[] = { ALT_V, KC_UP, COMBO_END };
+const uint16_t PROGMEM alt_down_combo[] = { ALT_V, KC_DOWN, COMBO_END };
+const uint16_t PROGMEM alt_left_combo[] = { ALT_V, KC_LEFT, COMBO_END };
+const uint16_t PROGMEM alt_right_combo[] = { ALT_V, KC_RGHT, COMBO_END };
+const uint16_t PROGMEM rwin_shift_s_combo[] = { GUI_K, SHT_OE, DE_S, COMBO_END };
 
-const uint16_t PROGMEM quick_terminal_combo[] = { CKC_GUI_Z, UC_TR1, COMBO_END };
+const uint16_t PROGMEM quick_terminal_combo[] = { GUI_Z, UC_TR1, COMBO_END };
 
-// const uint16_t PROGMEM close_combo[]  = { CKC_CTL_G, DE_W, COMBO_END };
+// const uint16_t PROGMEM close_combo[]  = { CTL_G, DE_W, COMBO_END };
 // const uint16_t PROGMEM close_combo_b[]  = { DE_R, DE_W, COMBO_END };
 
 const uint16_t PROGMEM clear_line_combo[] = { KC_BSPC, KC_LSFT, COMBO_END };
 const uint16_t PROGMEM quick_win_combo[]  = { UC_TL4, UC_TR1, COMBO_END };
-const uint16_t PROGMEM quick_vbox_combo[]  = { CKC_GUI_Z, CKC_CTL_G, COMBO_END };
+const uint16_t PROGMEM quick_vbox_combo[]  = { GUI_Z, CTL_G, COMBO_END };
 
-const uint16_t PROGMEM select_all_combo[] = { CKC_CTL_G, DE_A, COMBO_END };
+const uint16_t PROGMEM select_all_combo[] = { CTL_G, DE_A, COMBO_END };
 
 
 //Combo Action
@@ -741,8 +742,6 @@ bool get_combo_must_tap(uint16_t combo_index, combo_t *combo) {
         // case CTRL_W_B:
            // return false;
         case CTRL_A:
-            return false;
-        case ALT_SPACE:
             return false;
         case QUICK_TERMINAL:
             return false;
