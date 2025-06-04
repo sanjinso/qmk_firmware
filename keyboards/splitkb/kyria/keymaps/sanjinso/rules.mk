@@ -1,5 +1,8 @@
+CONVERT_TO=liatris
+EXTRAFLAGS += -flto
 
 # SRC += features/layer_lock.c
+SRC += features/layer_lock.c
 
 OLED_ENABLE = no
 OLED_DRIVER_ENABLE = no  # Enables the use of OLED displays
@@ -9,9 +12,6 @@ LEADER_ENABLE = no       # Enable the Leader Key feature
 
 MOUSEKEY_ENABLE = yes # Mouse keys
 EXTRAKEY_ENABLE = yes # Audio control and System control
-
-#TAP_DANCE_ENABLE = yes
-#EXTRAFLAGS += -flto
 
 TAP_DANCE_ENABLE = yes
 COMBO_ENABLE = yes
@@ -23,7 +23,13 @@ LEADER_ENABLE = no       # Enable the Leader Key feature
 WPM_ENABLE = no
 PET_ENABLE = no
 
-DYNAMIC_MACRO_ENABLE = no
-LED_UPDATE_USER_ENABLE = yes
+LTO_ENABL = yes
 
-KEY_LOCK_ENABLE = no
+CAPS_WORD_ENABLE = yes
+COMMAND_ENABL = yes
+DYNAMIC_MACRO_ENABLE = no
+
+LED_UPDATE_USER_ENABLE = yes
+KEY_LOCK_ENABLE = yes
+
+DEFERRED_EXEC_ENABLE = yes

@@ -6,6 +6,24 @@
 
 uint16_t copy_paste_timer;
 
+bool is_alt_tab_active = false;
+uint16_t alt_tab_timer = 0;
+
+enum custom_keycodes {
+    // SMTD_KEYCODES_BEGIN = SAFE_RANGE,
+    // CKC_GUI_Z,
+    // CKC_ALT_V,
+    // CKC_SHT_W,
+    // CKC_CTL_G,
+    // CKC_GUI_K,
+    // CKC_ALT_Y,
+    // CKC_SHT_OE,
+    // CKC_CTL_AE,
+    // SMTD_KEYCODES_END,
+
+    LLOCK = SAFE_RANGE,
+};
+
 /* ********
 * TAP DANCE
 **********/
@@ -36,12 +54,32 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 *                         `-------------------------------------'  `----------------------------------------'
 */
 [BASE] = LAYOUT(
-  TO(GAME), DE_F,  DE_M,  DE_L,  DE_C,  DE_P,                                  DE_UE,  DE_COMM, DE_DOT, DE_U,  DE_B,  DE_SS,
-  KC_NU,    DE_S,  DE_N,  DE_R,  DE_T,  DE_D,                                  DE_O,   DE_A,    DE_E,   DE_I,  DE_H,  DE_X,
+  TO(STRdY), DE_F,  DE_M,  DE_L,  DE_C,  DE_P,                                  DE_UE,  DE_COMM, DE_DOT, DE_U,  DE_B,  DE_SS,
+  KC_ESC,    DE_S,  DE_N,  DE_R,  DE_T,  DE_D,                                  DE_O,   DE_A,    DE_E,   DE_I,  DE_H,  DE_X,
   TO(BASE), GUI_Z, ALT_V, SHT_W, CTL_G, DE_J,  KC_NU, KC_NU,  KC_NU,  KC_NU,  DE_Q,   CTL_AE,  SHT_OE, ALT_Y, GUI_K, DE_MINS,
                        KC_NU, UC_TL1, UC_TL2, UC_TL3, UC_TL4,  UC_TR1, UC_TR2, UC_TR3, KC_LEAD, KC_TRNS
 ),
 
+/*
+* Base Layer: Sturdy
+*
+* ,-----------------------------------------------.                              ,------------------------------------------.
+* | NXT LYR    |   V  |   M  |   L  |   C  |   P  |                              |   X  |   F  |   O  |   U  |   J  |   ß   |
+* |------------+------+------+------+------+------|                              |------+------+------+------+------+-------|
+* | ESC        |   S  |   T  |   R  |   D  |   Y  |                              |   .  |   N  |   A  |   E  |   I  |   Ä   |
+* |------------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+-------|
+* | RESET LYR |   Z  |   K  |   Q  |   G  |   W  | ____ | RESET|  | ____ | ____ |   B  |  H  |   Ö  |   Ü  |   ,  |   -   |
+* `----------------------+------+--------+--------+------+------|  |------+------+------+------+------+---------------------'
+*                        | ____ | INVRT | MEDIA | NAVI  | MOUSE |  | SYM  | NUM    | FUNC   | ?      | ____ |
+*                        |      | Escape| Enter | Space | Tab   |  | Enter| Bspace | Delete | Leader |      |
+*                         `-------------------------------------'  `----------------------------------------'
+*/
+[STRDY] = LAYOUT(
+  TO(GAME), DE_V,  DE_M,  DE_L,  DE_C,  DE_P,                                  DE_X,  DE_F, DE_O, DE_U,  DE_J,  DE_SS,
+  KC_ESC,    DE_S,  DE_T,  DE_R,  DE_D,  DE_Y,                                  DE_OT,   DE_N,    DE_A,   DE_E,  DE_I,  DE_AE,
+  TO(BASE), GUI_Z, ALT_K, SHT_Q, CTL_G, DE_W,  KC_NU, KC_NU,  KC_NU,  KC_NU,  DE_B,   CTL_H,  SHT_OE, ALT_UE, GUI_COMM, DE_MINS,
+                       KC_NU, UC_TL1, UC_TL2, UC_TL3, UC_TL4,  UC_TR1, UC_TR2, UC_TR3, KC_LEAD, KC_TRNS
+),
 
 /*
  * Invert Layer: INVRT
@@ -81,7 +119,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 */
 [MEDR] = LAYOUT(
   TO(BASE), KC_NU,  KC_NU,   KC_NU,   KC_NU,   KC_NU,                                        KC_TOG, KC_MOD,        KC_HUI,              KC_SAI,        KC_VAI,  KC_NU,
-  TO(MEDR), KC_NU,  KC_F14,  KC_F15,  KC_F16,  KC_NU,                                        KC_NU,  KC_MPRV,       KC_VOLD,             KC_VOLU,       KC_MNXT, KC_NU,
+  LLOCK, KC_NU,  KC_F14,  KC_F15,  KC_F16,  KC_NU,                                        KC_NU,  KC_MPRV,       KC_VOLD,             KC_VOLU,       KC_MNXT, KC_NU,
   TO(BASE), KC_LGUI,KC_LALT, KC_LSFT, KC_LCTL,  KC_NU, KC_NU, KC_NU,  KC_NU,         KC_NU,   KC_NU,  KC_MEDIA_STOP, KC_MEDIA_PLAY_PAUSE, KC_AUDIO_MUTE, KC_NU,   KC_NU,
                        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_MEDIA_STOP, KC_MEDIA_PLAY_PAUSE, KC_AUDIO_MUTE, KC_TRNS, KC_TRNS
 
@@ -105,7 +143,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [NAVR] = LAYOUT(
   TO(BASE),  KC_NU,   KC_NU,   KC_NU,   KC_NU,   KC_NU,                                KC_COPY_C, KC_CUT_C,  KC_PASTE_C, KC_UNDO_C, KC_REDO_C, KC_NU,
-  TO(NAVR),  KC_NU,   KC_NU,   KC_NU,   KC_NU,   KC_NU,                                KC_CAPS,   KC_LEFT,   KC_DOWN,    KC_UP,     KC_RGHT,   KC_NU,
+  LLOCK,  KC_NU,   KC_NU,   KC_NU,   KC_NU,   KC_NU,                                KC_CAPS,   KC_LEFT,   KC_DOWN,    KC_UP,     KC_RGHT,   KC_NU,
   TO(BASE),  KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, KC_NU, KC_NU, KC_NU,  KC_NU,   KC_NU, KC_INS,    KC_HOME,   KC_PGDN,    KC_PGUP,   KC_END,    KC_NU,
                          KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
 ),
@@ -127,7 +165,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 */
 [MOUR] = LAYOUT(
   TO(BASE), KC_NU,   KC_NU,   KC_NU,   KC_NU,   KC_NU,                                 KC_NU, KC_NU,   KC_NU,   KC_NU,   KC_NU,   KC_NU,
-  TO(MOUR), KC_NU,  KC_NU,   KC_NU,   KC_NU,   KC_NU,                                 KC_NU, KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_NU,
+  LLOCK, KC_NU,  KC_NU,   KC_NU,   KC_NU,   KC_NU,                                 KC_NU, KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_NU,
   TO(BASE), KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, KC_NU, KC_NU, KC_NU,   KC_NU,   KC_NU, KC_NU, KC_WH_L, KC_WH_D, KC_WH_U, KC_WH_R, KC_NU,
                       KC_NP,   KC_NP,  KC_NU,   KC_NU, KC_NU, KC_BTN1, KC_BTN3, KC_BTN2, KC_NP, KC_NP
 ),
@@ -149,7 +187,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 */
 [MOURI] = LAYOUT(
   TO(BASE), KC_NU,   KC_NU,   KC_NU,   KC_NU,   KC_NU,                                 KC_NU,   KC_NU,   KC_NU,   KC_NU,   KC_NU,   KC_NU,
-  TO(BASE),    KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_NU,                                 KC_NU,   KC_NU,   KC_NU,   KC_NU,   KC_NU,   KC_NU,
+  LLOCK,    KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_NU,                                 KC_NU,   KC_NU,   KC_NU,   KC_NU,   KC_NU,   KC_NU,
   TO(BASE), KC_WH_L, KC_WH_D, KC_WH_U, KC_WH_R, KC_NU, KC_NU, KC_NU,   KC_NU,   KC_NU, KC_NU,   KC_LCTL, KC_LSFT, KC_LALT, KC_LGUI, KC_NU,
                               KC_NP, KC_NP, KC_BTN2, KC_BTN3, KC_BTN1, KC_BTN1, KC_BTN3, KC_BTN2, KC_NP, KC_TRNS
 ),
@@ -193,7 +231,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 */
 [NSL] = LAYOUT(
   TO(BASE),  DE_MINS, DE_7, DE_8, DE_9, DE_PLUS,                                  KC_NA, KC_NA,  KC_NA,   KC_NA,   KC_NU,   KC_NU,
-  TO(BASE),   DE_DOT,  DE_4, DE_5, DE_6, DE_COMM,                                    KC_NA, KC_NA,  KC_NA,   KC_NA,   KC_NA,   KC_NU,
+  LLOCK,   DE_DOT,  DE_4, DE_5, DE_6, DE_COMM,                                    KC_NA, KC_NA,  KC_NA,   KC_NA,   KC_NA,   KC_NU,
   TO(BASE),DE_BSLS, DE_1, DE_2, DE_3, DE_ASTR, KC_NU, KC_NU,       KC_NU,         KC_NU,  KC_NA, KC_LCTL,   KC_LSFT, KC_LALT, KC_LGUI, KC_NU,
                          KC_NP, KC_BSPC, KC_SPC, DE_0, DE_EQL,     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,   KC_TRNS
 ),
@@ -379,6 +417,7 @@ enum combo_events  {
     ALT_TAB,
     CTRL_TAB,
     SHIFT_CTRL_TAB,
+    ALT_SPACE,
 
     WIN_CTRL_LEFT,
     WIN_CTRL_RIGHT,
@@ -390,6 +429,8 @@ enum combo_events  {
     RWIN_SHIFT_S,
     // CTRL_W,
     // CTRL_W_B,
+
+    QUICK_TERMINAL,
 
     BSPC_LSFT_CLEAR,
     QUICK_WINDOWS,
@@ -414,6 +455,8 @@ const uint16_t PROGMEM alt_tab_combo[] = { ALT_V, UC_TL4, COMBO_END };
 const uint16_t PROGMEM ctrl_tab_combo[] = { CTL_G, UC_TL4, COMBO_END };
 const uint16_t PROGMEM shift_ctrl_tab_combo[] = { CTL_G, SHT_W, UC_TL4, COMBO_END };
 
+const uint16_t PROGMEM alt_space_combo[] = { ALT_V, UC_TL3, COMBO_END };
+
 const uint16_t PROGMEM win_ctrl_left_combo[] = { GUI_Z, CTL_G, KC_LEFT, COMBO_END };
 const uint16_t PROGMEM win_ctrl_right_combo[] = { GUI_Z, CTL_G, KC_RGHT, COMBO_END };
 
@@ -422,6 +465,9 @@ const uint16_t PROGMEM alt_down_combo[] = { ALT_V, KC_DOWN, COMBO_END };
 const uint16_t PROGMEM alt_left_combo[] = { ALT_V, KC_LEFT, COMBO_END };
 const uint16_t PROGMEM alt_right_combo[] = { ALT_V, KC_RGHT, COMBO_END };
 const uint16_t PROGMEM rwin_shift_s_combo[] = { GUI_K, SHT_OE, DE_S, COMBO_END };
+
+const uint16_t PROGMEM quick_terminal_combo[] = { GUI_Z, UC_TR1, COMBO_END };
+
 // const uint16_t PROGMEM close_combo[]  = { CTL_G, DE_W, COMBO_END };
 // const uint16_t PROGMEM close_combo_b[]  = { DE_R, DE_W, COMBO_END };
 
@@ -443,6 +489,7 @@ combo_t key_combos[COMBO_COUNT] = {
     [ALT_TAB] = COMBO_ACTION(alt_tab_combo),
     [CTRL_TAB] = COMBO(ctrl_tab_combo, LCTL(KC_TAB)),
     [SHIFT_CTRL_TAB] = COMBO(shift_ctrl_tab_combo, LCA_T(KC_TAB)),
+    [ALT_SPACE] = COMBO(alt_space_combo, LALT(KC_SPC)),
     [WIN_CTRL_LEFT] = COMBO(win_ctrl_left_combo, LGUI(LCTL(KC_TAB))),
     [WIN_CTRL_RIGHT] = COMBO(win_ctrl_right_combo, LGUI(LCTL(KC_TAB))),
     [ALT_UP] = COMBO(alt_up_combo, LALT(KC_UP)),
@@ -450,6 +497,9 @@ combo_t key_combos[COMBO_COUNT] = {
     [ALT_LEFT] = COMBO(alt_left_combo, LALT(KC_LEFT)),
     [ALT_RIGHT] = COMBO(alt_right_combo, LALT(KC_RGHT)),
     [RWIN_SHIFT_S] = COMBO(rwin_shift_s_combo, LGUI(LSFT(DE_S))),
+
+    [QUICK_TERMINAL] = COMBO_ACTION(quick_terminal_combo),
+
     // [CTRL_W] = COMBO(close_combo, LCTL(DE_W)),
     // [CTRL_W_B] = COMBO(close_combo_b, LCTL(DE_W)),
     [BSPC_LSFT_CLEAR] = COMBO_ACTION(clear_line_combo),
@@ -466,8 +516,14 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
         case ALT_TAB:
             if (pressed) {
                 tap_code16(LALT(KC_TAB));
-                //DRV_pulse(7);
-                //DRV_pulse(sh_dblsharp_tick);
+            }
+            break;
+        case CTRL_TAB:
+            if (pressed) {
+                register_code(KC_LCTL); // Hold CTRL
+                tap_code(KC_TAB);       // Press TAB once
+            } else {
+                unregister_code(KC_LCTL); // Release CTRL
             }
             break;
         case BSPC_LSFT_CLEAR:
@@ -488,6 +544,14 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
                 tap_code16(KC_LCTL);
             }
             break;
+        case QUICK_TERMINAL:
+            if (pressed) {
+                register_code16(KC_LGUI);
+                tap_code16(KC_ENT);
+            } else {
+                unregister_code(KC_LGUI); // Release CTRL
+            }            
+            break;
     }
 }
 
@@ -496,6 +560,8 @@ bool get_combo_must_tap(uint16_t combo_index, combo_t *combo) {
         // case CTRL_W_B:
            // return false;
         case CTRL_A:
+            return false;
+        case QUICK_TERMINAL:
             return false;
     }
 
@@ -526,9 +592,14 @@ bool get_combo_must_press_in_order(uint16_t combo_index, combo_t *combo) {
             return false;
         case QUICK_WINDOWS:
             return false;
+        case QUICK_TERMINAL:
+            return false;
+        case ALT_SPACE:
+            return false;
     }
     return true;
 }
+
 
 #endif
 

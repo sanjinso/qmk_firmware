@@ -38,6 +38,20 @@
 #define ALT_Y LALT_T(DE_Y)
 #define GUI_K LGUI_T(DE_K)
 
+/*****************************/
+// Left-hand Bottom row mods STURDY
+#define GUI_Z LGUI_T(DE_Z)
+#define ALT_K LALT_T(DE_K)
+#define SHT_Q LSFT_T(DE_Q)
+#define CTL_G LCTL_T(DE_G)
+
+// Right-hand Bottom row mods STURDY
+#define CTL_H LCTL_T(DE_H)
+#define SHT_OE RSFT_T(DE_OE)
+#define ALT_UE LALT_T(DE_UE)
+#define GUI_COMM LGUI_T(DE_COMM)
+/*****************************/
+
 // Left-hand Bottom row mods QWERTY
 #define GUI_Z LGUI_T(DE_Z)
 #define ALT_X LALT_T(DE_X)
@@ -65,4 +79,4 @@
 #define KC_LOCK QK_LOCK
 #define KC_LEAD QK_LEAD 
 
-enum custom_layers { BASE, INVRT, MEDR, NAVR, NAVRI, MOUR, MOURI, FUNL, NSL, SYMBOL, QWERTY, GAME, GAME_2 };
+enum custom_layers { BASE, INVRT, STRDY, MEDR, NAVR, NAVRI, MOUR, MOURI, FUNL, NSL, SYMBOL, QWERTY, GAME, GAME_2 };
