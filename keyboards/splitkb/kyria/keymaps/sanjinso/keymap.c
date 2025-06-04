@@ -9,6 +9,12 @@ uint16_t copy_paste_timer;
 bool is_alt_tab_active = false;
 uint16_t alt_tab_timer = 0;
 
+
+void keyboard_pre_init_user(void) {
+    gpio_set_pin_output(24);
+    gpio_write_pin_high(24);
+}
+
 enum custom_keycodes {
     // SMTD_KEYCODES_BEGIN = SAFE_RANGE,
     // CKC_GUI_Z,
