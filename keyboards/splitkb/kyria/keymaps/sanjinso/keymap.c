@@ -54,7 +54,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 *                         `-------------------------------------'  `----------------------------------------'
 */
 [BASE] = LAYOUT(
-  TO(STRdY), DE_F,  DE_M,  DE_L,  DE_C,  DE_P,                                  DE_UE,  DE_COMM, DE_DOT, DE_U,  DE_B,  DE_SS,
+  TO(STRDY), DE_F,  DE_M,  DE_L,  DE_C,  DE_P,                                  DE_UE,  DE_COMM, DE_DOT, DE_U,  DE_B,  DE_SS,
   KC_ESC,    DE_S,  DE_N,  DE_R,  DE_T,  DE_D,                                  DE_O,   DE_A,    DE_E,   DE_I,  DE_H,  DE_X,
   TO(BASE), GUI_Z, ALT_V, SHT_W, CTL_G, DE_J,  KC_NU, KC_NU,  KC_NU,  KC_NU,  DE_Q,   CTL_AE,  SHT_OE, ALT_Y, GUI_K, DE_MINS,
                        KC_NU, UC_TL1, UC_TL2, UC_TL3, UC_TL4,  UC_TR1, UC_TR2, UC_TR3, KC_LEAD, KC_TRNS
@@ -76,7 +76,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 */
 [STRDY] = LAYOUT(
   TO(GAME), DE_V,  DE_M,  DE_L,  DE_C,  DE_P,                                  DE_X,  DE_F, DE_O, DE_U,  DE_J,  DE_SS,
-  KC_ESC,    DE_S,  DE_T,  DE_R,  DE_D,  DE_Y,                                  DE_OT,   DE_N,    DE_A,   DE_E,  DE_I,  DE_AE,
+  KC_ESC,    DE_S,  DE_T,  DE_R,  DE_D,  DE_Y,                                  DE_DOT,   DE_N,    DE_A,   DE_E,  DE_I,  DE_AE,
   TO(BASE), GUI_Z, ALT_K, SHT_Q, CTL_G, DE_W,  KC_NU, KC_NU,  KC_NU,  KC_NU,  DE_B,   CTL_H,  SHT_OE, ALT_UE, GUI_COMM, DE_MINS,
                        KC_NU, UC_TL1, UC_TL2, UC_TL3, UC_TL4,  UC_TR1, UC_TR2, UC_TR3, KC_LEAD, KC_TRNS
 ),
@@ -699,8 +699,6 @@ bool oled_task_user(void) {
 }
 #endif
 
-bool is_alt_tab_active = false;
-uint16_t alt_tab_timer = 0;
 
 #ifdef ENCODER_ENABLE
 bool encoder_update_user(uint8_t index, bool clockwise) {
