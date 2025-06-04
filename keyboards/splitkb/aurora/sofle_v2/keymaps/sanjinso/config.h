@@ -112,7 +112,7 @@
   //#define ENABLE_RGB_MATRIX_SOLID_MULTISPLASH
 #endif
 
-
+//DEBUGGING
 #ifndef NO_DEBUG
   #define NO_DEBUG
 #endif // !NO_DEBUG
